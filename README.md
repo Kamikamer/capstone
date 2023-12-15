@@ -1,2 +1,4 @@
 # capstone
 Storage
+amos
+
