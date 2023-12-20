@@ -1,4 +1,4 @@
 # capstone
-Storage
-amos
+Storage l
+
 
