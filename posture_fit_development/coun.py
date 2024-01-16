@@ -13,7 +13,7 @@ time_current = 0
 feedback = "Fix Form"
 while cap.isOpened():
     response, frame = cap.read()
-    frame_RGB = cv2.cvtColor(frame,cv2.COLOR_BGR2RGB)
+    #frame_RGB = cv2.cvtColor(frame,cv2.COLOR_BGR2RGB)
     time_current = time.time()
     fps = 1 / (time_current - time_previous)
     time_previous = time_current
@@ -49,7 +49,7 @@ while cap.isOpened():
                 else:
                     feedback = "Fix Form"
         #Pushup counter
-        cv2.rectangle(img,(0,380),(100,480),(0,0,0),cv2.FILLED)
+        cv2.rectangle(img,(0,380),(120,480),(0,0,0),cv2.FILLED)
         cv2.putText(img,str(int(count)),(25,455),cv2.FONT_HERSHEY_PLAIN, 5,(255,255,255),5)
         cv2.putText(img,str(int(fps)),(10,70),cv2.FONT_HERSHEY_PLAIN,3,(0,0,255),3)
     cv2.imshow('Pushup counter',img)
