@@ -49,15 +49,45 @@ class poseDetector() :
         #Draw
         if draw:
             cv2.line(img,(x1,y1),(x2,y2),(255,255,255),3)
-            cv2.line(img,(x3,y3),(x2,y2),(255,255,255),3)
             cv2.circle(img,(x1,y1),5,(0,0,255),cv2.FILLED)
             cv2.circle(img,(x1,y1),15,(0,0,255),2)
-            cv2.circle(img,(x2,y2),5,(0,0,255),cv2.FILLED)
-            cv2.circle(img,(x2,y2),15,(0,0,255),2)
-            cv2.circle(img,(x3,y3),5,(0,0,255),cv2.FILLED)
-            cv2.circle(img,(x3,y3),15,(0,0,255),2)
             cv2.putText(img,str(int(angle)),(x2-50,y2+50),cv2.FONT_HERSHEY_PLAIN,2,(0,0,255),2)
         return angle
+    def correctForm(self, img, angles, thresholds, draw=True):
+        # Check if each angle meets the specified criteria
+        is_correct_form = all(abs(angle) >= threshold for angle, threshold in zip(angles, thresholds))
+
+        # Update the color based on correctness
+        color = (0, 255, 0) if is_correct_form else (0, 0, 255)
+
+        # Draw the lines and circles with the updated color
+        if draw:
+            # Specify the landmark indices for the lines you want to draw
+            draw_lines_indices = [15, 13, 11, 23, 25]
+
+            for idx in draw_lines_indices:
+                if idx < len(self.lmList):
+                    lm_id, cx, cy = self.lmList[idx]
+                    cv2.circle(img, (cx, cy), 5, color, cv2.FILLED)
+                    cv2.circle(img, (cx, cy), 15, color, 2)
+
+            # Draw lines and text annotations for specific landmarks
+            for i in range(len(draw_lines_indices) - 1):
+                idx1, idx2 = draw_lines_indices[i], draw_lines_indices[i + 1]
+                if idx1 < len(self.lmList) and idx2 < len(self.lmList):
+                    x1, y1 = self.lmList[idx1][1:]
+                    x2, y2 = self.lmList[idx2][1:]
+
+                    # Draw lines
+                    cv2.line(img, (x1, y1), (x2, y2), color, 3)
+
+                    # Calculate and display angle
+                    angle = self.findAngle(img, idx1, idx2, idx2 + 1, draw=False)
+                    cv2.putText(img, str(int(angle)), (x2 - 50, y2 + 50), cv2.FONT_HERSHEY_PLAIN, 2, color, 2)
+
+        return is_correct_form
+
+
 def main():
     detector = poseDetector()
     cap = cv2.VideoCapture(0)
