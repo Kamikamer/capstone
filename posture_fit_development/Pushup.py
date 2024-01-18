@@ -21,14 +21,14 @@ while cap.isOpened():
     img = detector.findPose(frame,False)
     lmList = detector.findPosition(frame,False)
     if len(lmList) != 0:
-        elbow = detector.findAngle(frame, 11, 13, 15, draw=False)
-        shoulder = detector.findAngle(frame, 13, 11, 23, draw=False)
-        hip = detector.findAngle(frame, 11, 23, 25, draw=False)
+        elbow = detector.findAngle(frame,11,13,15,draw=False)
+        shoulder = detector.findAngle(frame,13,11,23,draw=False)
+        hip = detector.findAngle(frame,11,23,25,draw=False)
         # Specify the angles and thresholds for correctness
-        angles = [elbow, shoulder, hip]
-        thresholds = [155, 35, 155]
+        angles = [elbow,shoulder,hip]
+        thresholds = [155,35,155]
         # Use the correctForm function to check and draw lines with correct color
-        is_correct_form = detector.correctForm(frame, angles, thresholds)
+        is_correct_form = detector.correctForm(frame,angles,thresholds)
         if is_correct_form:
             form = 1
         if form == 1:
@@ -48,7 +48,7 @@ while cap.isOpened():
                      feedback = "Fix Form"
         #Pushup counter
         cv2.rectangle(frame,(0,380),(100,480),(0,0,0),cv2.FILLED)
-        cv2.putText(frame,str(int(count)),(25,455),cv2.FONT_HERSHEY_PLAIN, 3,(255,255,255),3)
+        cv2.putText(frame,str(int(count)),(25,455),cv2.FONT_HERSHEY_PLAIN,3,(255,255,255),3)
         cv2.putText(frame,str(int(fps)),(10,70),cv2.FONT_HERSHEY_PLAIN,3,(0,0,255),3)
     cv2.imshow('Pushup counter',frame)
     if cv2.waitKey(1) & 0xFF == ord('q'):
