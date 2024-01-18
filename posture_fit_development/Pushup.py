@@ -29,16 +29,13 @@ while cap.isOpened():
         elbow = detector.findAngle(img, 11, 13, 15, draw=False)
         shoulder = detector.findAngle(img, 13, 11, 23, draw=False)
         hip = detector.findAngle(img, 11, 23, 25, draw=False)
-
         # Specify the angles and thresholds for correctness
         angles = [elbow, shoulder, hip]
         thresholds = [155, 35, 155]
-
         # Use the correctForm function to check and draw lines with correct color
         is_correct_form = detector.correctForm(img, angles, thresholds)
         if is_correct_form:
             form = 1
-
         if form == 1:
                 if elbow <= 90 and hip > 160:
                         feedback = "Up"
