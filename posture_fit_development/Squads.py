@@ -13,21 +13,21 @@ time_current = 0
 feedback = "Fix Form"
 while cap.isOpened():
     response, frame = cap.read()
+    frame = cv2.flip(frame,1)    
     frame_RGB = cv2.cvtColor(frame,cv2.COLOR_BGR2RGB)
     time_current = time.time()
     fps = 1 / (time_current - time_previous)
     time_previous = time_current
-    ret, img = cap.read() #640 x 480
-    img = detector.findPose(img,False)
-    lmList = detector.findPosition(img,False)
+    img = detector.findPose(frame,False)
+    lmList = detector.findPosition(frame,False)
     if len(lmList) != 0:
-        knee = detector.findAngle(img, 23, 25, 27, draw=False)
-        hip = detector.findAngle(img, 11, 23, 25, draw=False)
+        knee = detector.findAngle(frame, 23, 25, 27, draw=False)
+        hip = detector.findAngle(frame, 11, 23, 25, draw=False)
         # Specify the angles and thresholds for correctness
         angles = [knee, hip]
         thresholds = [155, 35, 155]
         # Use the correctForm function to check and draw lines with correct color
-        is_correct_form = detector.correctForm(img, angles, thresholds)
+        is_correct_form = detector.correctForm(frame, angles, thresholds)
         if is_correct_form:
             form = 1
         if form == 1:
@@ -46,10 +46,10 @@ while cap.isOpened():
                 else:
                      feedback = "Fix Form"
         #Pushup counter
-        cv2.rectangle(img,(0,380),(100,480),(0,0,0),cv2.FILLED)
-        cv2.putText(img,str(int(count)),(25,455),cv2.FONT_HERSHEY_PLAIN, 3,(255,255,255),3)
-        cv2.putText(img,str(int(fps)),(10,70),cv2.FONT_HERSHEY_PLAIN,3,(0,0,255),3)
-    cv2.imshow('Pushup counter',img)
+        cv2.rectangle(frame,(0,380),(100,480),(0,0,0),cv2.FILLED)
+        cv2.putText(frame,str(int(count)),(25,455),cv2.FONT_HERSHEY_PLAIN, 3,(255,255,255),3)
+        cv2.putText(frame,str(int(fps)),(10,70),cv2.FONT_HERSHEY_PLAIN,3,(0,0,255),3)
+    cv2.imshow('Pushup counter',frame)
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
 cap.release()
