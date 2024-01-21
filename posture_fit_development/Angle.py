@@ -2,9 +2,9 @@ import cv2
 import mediapipe
 import numpy
 import time
-import pr
+import posture_fit_development.index as index
 cap = cv2.VideoCapture(0)
-detector = pr.poseDetector()
+detector = index.poseDetector()
 while cap.isOpened():
     response, frame = cap.read()
     #frame_RGB = cv2.cvtColor(frame,cv2.COLOR_BGR2RGB)
