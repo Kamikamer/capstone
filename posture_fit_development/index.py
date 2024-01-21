@@ -82,10 +82,11 @@ def main():
     detector = poseDetector()
     cap = cv2.VideoCapture(0)
     while cap.isOpened():
-        ret, img = cap.read() #ret is just the return variable, not much in there that we will use. 
-        if ret:    
-            img = detector.findPose(img)
-            cv2.imshow('Pose Detection',img)
+        response, frame = cap.read()
+        frame = cv2.flip(frame,1)    
+        if response:    
+            frame = detector.findPose(frame)
+            cv2.imshow('Pose Detection',frame)
         if cv2.waitKey(1) & 0xFF == ord('q'):
             break
     cap.release()
