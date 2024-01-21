@@ -2,9 +2,9 @@ import cv2
 import mediapipe
 import numpy
 import time
-import pr
+import posture_fit_development.index as index
 cap = cv2.VideoCapture(0)
-detector = pr.poseDetector()
+detector = index.poseDetector()
 count = 0
 direction = 0
 form = 0
