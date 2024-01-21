@@ -1,7 +1,4 @@
 import cv2
-import mediapipe
-import numpy
-import time
 import index
 cap = cv2.VideoCapture(0)
 detector = index.poseDetector()
