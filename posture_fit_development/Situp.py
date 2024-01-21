@@ -2,7 +2,7 @@ import cv2
 import mediapipe
 import numpy
 import time
-import posture_fit_development.index as index
+import index
 cap = cv2.VideoCapture(0)
 detector = index.poseDetector()
 count = 0
@@ -46,7 +46,7 @@ while cap.isOpened():
                          direction = 0
                 else:
                      feedback = "Fix Form"
-        #Pushup counter
+        #Situp counter and frame rate
         cv2.rectangle(frame,(0,380),(100,480),(0,0,0),cv2.FILLED)
         cv2.putText(frame,str(int(count)),(25,455),cv2.FONT_HERSHEY_PLAIN,3,(255,255,255),3)
         cv2.putText(frame,str(int(fps)),(10,70),cv2.FONT_HERSHEY_PLAIN,3,(0,0,255),3)
