@@ -2,7 +2,7 @@ import cv2
 import mediapipe
 import numpy
 import time
-import index
+import  posture_fit_development.index as index
 cap = cv2.VideoCapture(0)
 detector = index.poseDetector()
 count = 0
