@@ -2,7 +2,7 @@ import cv2
 import mediapipe
 import numpy
 import time
-import posture_fit_development.index as index
+import index
 cap = cv2.VideoCapture(0)
 detector = index.poseDetector()
 count = 0
@@ -25,7 +25,7 @@ while cap.isOpened():
         hip = detector.findAngle(frame,11,23,25,draw=False)
         # Specify the angles and thresholds for correctness
         angles = [hip,knee]
-        thresholds = [155,35,155]
+        thresholds = [60,90]
         # Use the correctForm function to check and draw lines with correct color
         is_correct_form = detector.correctForm(frame,angles,thresholds)
         if is_correct_form:
@@ -45,7 +45,7 @@ while cap.isOpened():
                          direction = 0
                 else:
                      feedback = "Fix Form"
-        #Pushup counter
+        #Squads counter and frame rate
         cv2.rectangle(frame,(0,380),(100,480),(0,0,0),cv2.FILLED)
         cv2.putText(frame,str(int(count)),(25,455),cv2.FONT_HERSHEY_PLAIN,3,(255,255,255),3)
         cv2.putText(frame,str(int(fps)),(10,70),cv2.FONT_HERSHEY_PLAIN,3,(0,0,255),3)

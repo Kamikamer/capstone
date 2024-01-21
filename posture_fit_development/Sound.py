@@ -1,17 +1,14 @@
 import winsound
 import os
 import time
-
 class SoundPlayer:
     def __new__(cls):
         if not hasattr(cls, 'instance'):
             cls.instance = super(SoundPlayer, cls).__new__(cls)
         return cls.instance
-
     def __init__(self, cooldown_duration=3) -> None:
         self.last_play_time = 0
         self.cooldown_duration = cooldown_duration
-
     def play_sound(self, file_name=None) -> None:
         current_time = time.time()
         print(current_time)
@@ -19,15 +16,12 @@ class SoundPlayer:
         if current_time - self.last_play_time >= self.cooldown_duration:
             # Update the last play time
             self.last_play_time = current_time
-            
             # Play the sound
             self.sound(file_name)
         else:
             print("Cooldown period active, cannot play sound yet")
-
     def sound(self, specific_file=None) -> None:
         print('playing sound using native player')
-
         # Pathing
         current_path = os.getcwd().split("\\")
         if current_path[-1] == 'posture_fit_development':
@@ -44,7 +38,6 @@ class SoundPlayer:
         else:
             winsound.PlaySound(current_path + '\\' +
                                specific_file, winsound.SND_FILENAME)
-
 if __name__ == '__main__':
     sp = SoundPlayer()
     sp2 = SoundPlayer()
