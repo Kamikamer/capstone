@@ -30,20 +30,20 @@ while cap.isOpened():
         if is_correct_form:
             form = 1
         if form == 1:
-                if knee <= 90 and hip > 160:
-                        feedback = "Up"
-                        if direction == 0:
-                            count += 0.5
-                            direction = 1
-                else:
-                    feedback = "Fix Form"
-                if knee > 160 and hip > 160:
-                    feedback = "Down"
-                    if direction == 1:
-                         count += 0.5
-                         direction = 0
-                else:
-                     feedback = "Fix Form"
+            if knee <= 90 and hip > 160:
+                feedback = "Up"
+                if direction == 0:
+                    count += 0.5
+                    direction = 1
+            else:
+                feedback = "Fix Form"
+            if knee > 160 and hip > 160:
+                feedback = "Down"
+                if direction == 1:
+                    count += 0.5
+                    direction = 0
+            else:
+                feedback = "Fix Form"
         #Situp counter and frame rate
         cv2.rectangle(frame,(0,380),(100,480),(0,0,0),cv2.FILLED)
         cv2.putText(frame,str(int(count)),(25,455),cv2.FONT_HERSHEY_PLAIN,3,(255,255,255),3)
