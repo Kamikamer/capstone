@@ -1,21 +1,17 @@
 import cv2
 import time
-import posture_fit_development.index as index
+import detector 
+from posture_fit_development import Webcam
 cap = cv2.VideoCapture(0)
-detector = index.poseDetector()
+detector = detector.poseDetector()
 count = 0
 direction = 0
 form = 0
 time_previous = 0
 time_current = 0
 feedback = "Fix Form"
+frame = Webcam().camera_stats()
 while cap.isOpened():
-    response, frame = cap.read()
-    frame = cv2.flip(frame,1)    
-    frame_RGB = cv2.cvtColor(frame,cv2.COLOR_BGR2RGB)
-    time_current = time.time()
-    fps = 1 / (time_current - time_previous)
-    time_previous = time_current
     img = detector.findPose(frame,False)
     lmList = detector.findPosition(frame,False)
     if len(lmList) != 0:
@@ -48,7 +44,7 @@ while cap.isOpened():
         cv2.rectangle(frame,(0,380),(100,480),(0,0,0),cv2.FILLED)
         cv2.putText(frame,str(int(count)),(25,455),cv2.FONT_HERSHEY_PLAIN,3,(255,255,255),3)
         cv2.putText(frame,str(int(fps)),(10,70),cv2.FONT_HERSHEY_PLAIN,3,(0,0,255),3)
-    cv2.imshow('Pushup counter',frame)
+    cv2.imshow('Situp counter',frame)
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
 cap.release()

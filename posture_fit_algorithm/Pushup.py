@@ -1,8 +1,9 @@
 import cv2
 import time
-import posture_fit_development.index as index
+import detector
+
 cap = cv2.VideoCapture(0)
-detector = index.poseDetector()
+detector = detector.poseDetector()
 count = 0
 direction = 0
 form = 0
