@@ -23,24 +23,31 @@ class SoundPlayer:
             self.sound(file_name)
         else:
             print("Cooldown period active, cannot play sound yet")
+            
     def sound(self, specific_file=None) -> None:
-        print('playing sound using native player')
+        print('Playing sound using playsound lib')
+        path_type = "/" if os.name == 'posix' else "\\"
+
         # Pathing
-        current_path = os.getcwd().split("/")
+        current_path = os.getcwd().split(path_type)
+        if current_path[0] == "":
+            current_path[0] = "/"
         if current_path[-1] == 'posture_fit_development':
-            current_path = '/'.join(current_path[:-1]) + '/assets'
+            current_path = os.path.join(*current_path[:-1], 'assets')
         elif current_path[-1] == 'posture_fit_algorithm':
-            current_path = '/'.join(current_path[:-1]) + '/assets'
+            current_path = os.path.join(*current_path[:-1], 'assets')
         elif current_path[-1] == 'capstone':
-            current_path = '/'.join(current_path) + '/assets'
+            current_path = os.path.join(*current_path, "assets")
         else:
-            current_path = '/'.join(current_path)
-            print(current_path)
+            current_path = os.path.join(*current_path)
+
+        print(current_path)
+        # Play the sound
         if specific_file is None:
-            playsound(current_path + '/note.wav')
+            playsound(os.path.join(current_path + '/note.wav'))
         else:
-            playsound(current_path + '/' +
-                               specific_file + ".wav")
+            playsound(os.path.join(current_path + rf'/{specific_file}.wav'))
+
 if __name__ == '__main__':
     sp = SoundPlayer()
     sp2 = SoundPlayer()
