@@ -30,8 +30,8 @@ class SoundPlayer:
 
         # Pathing
         current_path = os.getcwd().split(path_type)
-        if current_path[0] == "":
-            current_path[0] = "/"
+        print(f"Current path: {current_path}")
+        current_path[0] = "C:\\" if current_path[0] == "C:" else "/"
         if current_path[-1] == 'posture_fit_development':
             current_path = os.path.join(*current_path[:-1], 'assets')
         elif current_path[-1] == 'posture_fit_algorithm':
@@ -40,8 +40,6 @@ class SoundPlayer:
             current_path = os.path.join(*current_path, "assets")
         else:
             current_path = os.path.join(*current_path)
-
-        print(current_path)
         # Play the sound
         if specific_file is None:
             playsound(os.path.join(current_path + rf'{path_type}note.wav'))
