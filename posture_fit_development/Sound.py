@@ -7,12 +7,14 @@ class SoundPlayer:
         if not hasattr(cls, 'instance'):
             cls.instance = super(SoundPlayer, cls).__new__(cls)
         return cls.instance
+
     def __init__(self, cooldown_duration=3) -> None:
         self.last_play_time = 0
         self.cooldown_duration = cooldown_duration
+        
     def play_sound(self, file_name=None) -> None:
         current_time = time.time()
-        print(current_time)
+        print(f"Epoch: {current_time}")
         # Check if enough time has passed since the last call
         if current_time - self.last_play_time >= self.cooldown_duration:
             # Update the last play time
