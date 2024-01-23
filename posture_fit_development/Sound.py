@@ -1,6 +1,7 @@
-import winsound
 import os
 import time
+from playsound import playsound
+
 class SoundPlayer:
     def __new__(cls):
         if not hasattr(cls, 'instance'):
@@ -23,21 +24,21 @@ class SoundPlayer:
     def sound(self, specific_file=None) -> None:
         print('playing sound using native player')
         # Pathing
-        current_path = os.getcwd().split("\\")
+        current_path = os.getcwd().split("/")
         if current_path[-1] == 'posture_fit_development':
-            current_path = '\\'.join(current_path[:-1]) + '\\assets'
+            current_path = '/'.join(current_path[:-1]) + '/assets'
         elif current_path[-1] == 'posture_fit_algorithm':
-            current_path = '\\'.join(current_path[:-1]) + '\\assets'
+            current_path = '/'.join(current_path[:-1]) + '/assets'
         elif current_path[-1] == 'capstone':
-            current_path = '\\'.join(current_path) + '\\assets'
+            current_path = '/'.join(current_path) + '/assets'
         else:
-            current_path = '\\'.join(current_path)
+            current_path = '/'.join(current_path)
             print(current_path)
         if specific_file is None:
-            winsound.PlaySound(current_path + '\\note', winsound.SND_FILENAME)
+            playsound(current_path + '/note.wav')
         else:
-            winsound.PlaySound(current_path + '\\' +
-                               specific_file, winsound.SND_FILENAME)
+            playsound(current_path + '/' +
+                               specific_file + ".wav")
 if __name__ == '__main__':
     sp = SoundPlayer()
     sp2 = SoundPlayer()
