@@ -1,17 +1,14 @@
 import os
 import time
 from playsound import playsound
-
 class SoundPlayer:
     def __new__(cls):
         if not hasattr(cls, 'instance'):
             cls.instance = super(SoundPlayer, cls).__new__(cls)
         return cls.instance
-
     def __init__(self, cooldown_duration=3) -> None:
         self.last_play_time = 0
-        self.cooldown_duration = cooldown_duration
-        
+        self.cooldown_duration = cooldown_duration     
     def play_sound(self, file_name=None) -> None:
         current_time = time.time()
         print(f"Epoch: {current_time}")
@@ -23,11 +20,9 @@ class SoundPlayer:
             self.sound(file_name)
         else:
             print("Cooldown period active, cannot play sound yet")
-            
     def sound(self, specific_file=None) -> None:
         print('Playing sound using playsound lib')
         path_type = "/" if os.name == 'posix' else "\\"
-
         # Pathing
         current_path = os.getcwd().split(path_type)
         print(f"Current path: {current_path}")
@@ -45,7 +40,6 @@ class SoundPlayer:
             playsound(os.path.join(current_path + rf'{path_type}note.wav'))
         else:
             playsound(os.path.join(current_path + rf'{path_type}{specific_file}.wav'))
-
 if __name__ == '__main__':
     sp = SoundPlayer()
     sp2 = SoundPlayer()
