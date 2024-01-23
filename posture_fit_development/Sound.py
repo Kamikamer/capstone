@@ -44,9 +44,9 @@ class SoundPlayer:
         print(current_path)
         # Play the sound
         if specific_file is None:
-            playsound(os.path.join(current_path + '/note.wav'))
+            playsound(os.path.join(current_path + rf'{path_type}note.wav'))
         else:
-            playsound(os.path.join(current_path + rf'/{specific_file}.wav'))
+            playsound(os.path.join(current_path + rf'{path_type}{specific_file}.wav'))
 
 if __name__ == '__main__':
     sp = SoundPlayer()
