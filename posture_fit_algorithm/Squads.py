@@ -47,7 +47,7 @@ while cap.isOpened():
         cv2.rectangle(frame,(0,380),(100,480),(0,0,0),cv2.FILLED)
         cv2.putText(frame,str(int(count)),(25,455),cv2.FONT_HERSHEY_PLAIN,3,(255,255,255),3)
         cv2.putText(frame,str(int(fps)),(10,70),cv2.FONT_HERSHEY_PLAIN,3,(0,0,255),3)
-    cv2.imshow('Pushup counter',frame)
+    cv2.imshow('Squads counter',frame)
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
 cap.release()
