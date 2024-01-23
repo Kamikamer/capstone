@@ -1,8 +1,8 @@
 import cv2
 import time
-import detector
+import posture_fit_algorithm.Detector as Detector
 cap = cv2.VideoCapture(0)
-detector = detector.poseDetector()
+Detector = Detector.poseDetector()
 count = 0
 direction = 0
 form = 0
@@ -16,16 +16,16 @@ while cap.isOpened():
     time_current = time.time()
     fps = 1 / (time_current - time_previous)
     time_previous = time_current
-    img = detector.findPose(frame,False)
-    lmList = detector.findPosition(frame,False)
+    img = Detector.findPose(img=frame, draw=False)
+    lmList = Detector.findPosition(frame,False)
     if len(lmList) != 0:
-        knee = detector.findAngle(frame,23,25,27,draw=False)
-        hip = detector.findAngle(frame,11,23,25,draw=False)
+        knee = Detector.findAngle(frame,23,25,27,draw=False)
+        hip = Detector.findAngle(frame,11,23,25,draw=False)
         # Specify the angles and thresholds for correctness
         angles = [hip,knee]
         thresholds = [165,165]
         # Use the correctForm function to check and draw lines with correct color
-        is_correct_form = detector.correctForm(frame,angles,thresholds)
+        is_correct_form = Detector.correctForm(frame,angles,thresholds)
         if is_correct_form:
             form = 1
         if form == 1:
