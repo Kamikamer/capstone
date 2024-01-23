@@ -1,10 +1,33 @@
 import cv2
+import time
 cap = cv2.VideoCapture(0)
-while cap.isOpened():
-    response, frame = cap.read()
-    frame = cv2.flip(frame,1)    
-    cv2.imshow('Webcam',frame)
-    if cv2.waitKey(1) & 0xFF == ord('q'):
-        break
-cap.release()
-cv2.destroyAllWindows()
+class CameraModule():
+    def __new__(cls):
+        if not hasattr(cls, 'instance'):
+            cls.instance = super(CameraModule, cls).__new__(cls)
+        return cls.instance
+    
+    def __init__(self) -> None:
+        self.webcam =  False
+        self.required = True
+        self.frame = None
+        pass
+    
+    def open_camera(self) -> None:
+        self.webcam = True
+        while cap.isOpened():
+            _, frame = cap.read()
+            _ = cv2.cvtColor(frame,cv2.COLOR_BGR2RGB)
+            frame = cv2.flip(frame,1)    
+
+            time_current = time.time()
+            fps = 1 / (time_current - time_previous)
+            time_previous = time_current
+
+            self.frame = frame
+            self.fps = fps
+            self.requried = True
+        cap.release()
+        cv2.destroyAllWindows()
+    def camera_stats(self) -> [list[str]]:
+        return [self.required, self.fps, self.frame]

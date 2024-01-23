@@ -1,7 +1,7 @@
 import cv2
-import index
+import posture_fit_algorithm.detector as detector
 cap = cv2.VideoCapture(0)
-detector = index.poseDetector()
+detector = detector.poseDetector()
 while cap.isOpened():
     response, frame = cap.read()
     frame = cv2.flip(frame,1)    
