@@ -1,7 +1,7 @@
 import cv2
-import posture_fit_algorithm.detector as detector
+import posture_fit_algorithm.Detector as Detector
 cap = cv2.VideoCapture(0)
-detector = detector.poseDetector()
+detector = Detector.poseDetector()
 count = 0
 while cap.isOpened():
     response, frame = cap.read()
