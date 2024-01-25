@@ -2,5 +2,4 @@ opencv-python
 mediapipe
 numpy
 playsound==1.2.2
-pygobject
 icecream
