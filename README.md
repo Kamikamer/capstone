@@ -15,7 +15,7 @@ E.g. python -m posture_fit_development.Webcam
 E.g. python -m posture_fit_algorithm.Detector
 
 # Common error
-If you installed the libraries manually and you are facing error with the sound system such as ![The driver cannot recognize the spececified command parameter.](driver_error_sp.png)<br>
+If you installed the libraries manually and you are facing error with the sound system such as ![The driver cannot recognize the spececified command parameter.](/assets/driver_error_sp.png)<br>
 Reinstall playsound (lib) with version 1.2.2<br>
 `pip uninstall playsound -y; pip install playsound==1.2.2` <br>
 `pip uninstall playsound -y && pip install playsound==1.2.2`
