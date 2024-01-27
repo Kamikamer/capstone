@@ -2,13 +2,13 @@ import cv2
 from posture_fit_algorithm.Detector2 import ExerciseLogic
 from posture_fit_algorithm.Pushup import PushupLogic  # noqa: F401
 from posture_fit_algorithm.Situp import SitupLogic
-from posture_fit_algorithm.Squads import SquadsLogic
+#from posture_fit_algorithm.Squads import SquadsLogic
 from icecream import ic
 cap = cv2.VideoCapture(0)
-cap.set(3,1_300)
-cap.set(4,720)
+cap.set(3,1_000)
+cap.set(4,700)
 # Change to PushupLogic("Pushup") for pushups
-exercise_logic = SitupLogic("Situp")  
+exercise_logic = PushupLogic("Pushup")  
 while cap.isOpened():
     cap.set(3,1_300)
     cap.set(4,720)
