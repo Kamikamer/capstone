@@ -5,9 +5,13 @@ from posture_fit_algorithm.Situp import SitupLogic
 from posture_fit_algorithm.Squads import SquadsLogic
 from icecream import ic
 cap = cv2.VideoCapture(0)
+cap.set(3,1_300)
+cap.set(4,720)
 # Change to PushupLogic("Pushup") for pushups
 exercise_logic = SitupLogic("Situp")  
 while cap.isOpened():
+    cap.set(3,1_300)
+    cap.set(4,720)
     response, frame = cap.read()
     frame = cv2.flip(frame, 1)
     # Call the generic process_frame method from Exercise Logic
