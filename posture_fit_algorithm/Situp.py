@@ -26,8 +26,8 @@ class SitupLogic(ExerciseLogic):
                 self.direction = 1
         else:
             self.feedback = "Fix Form"
-            sp = SoundPlayer()
-            sp.play_sound()
+            # sp = SoundPlayer()
+            # sp.play_sound()
         if ankle <= 135 and knee <= 90 and hip <= 35:
             self.feedback = "Down"
             if self.direction == 1:
@@ -35,5 +35,5 @@ class SitupLogic(ExerciseLogic):
                 self.direction = 0
         else:
             self.feedback = "Fix Form"
-            sp = SoundPlayer()
-            sp.play_sound()
+            # sp = SoundPlayer()
+            # sp.play_sound()
