@@ -1,7 +1,10 @@
 from posture_fit_algorithm.Detector2 import ExerciseLogic
 from posture_fit_development.Sound import SoundPlayer
 class PushupLogic(ExerciseLogic):
-    def get_angles_and_thresholds(self, frame) -> tuple[list[int], list[int]]:
+    def __init__(self, exercise_name) -> None:
+        super().__init__(exercise_name=exercise_name)
+
+    def get_angles_and_thresholds(self, frame) -> tuple[list[float], list[int]]:
         elbow = self.findAngle(frame, 11, 13, 15, draw=False)
         shoulder = self.findAngle(frame, 13, 11, 23, draw=False)
         hip = self.findAngle(frame, 11, 23, 25, draw=False)

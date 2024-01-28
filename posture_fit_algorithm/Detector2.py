@@ -84,7 +84,6 @@ class ExerciseLogic:
             cv2.putText(img, str(int(angle)), (x2 - 50, y2 + 50), cv2.FONT_HERSHEY_PLAIN, 2, (0, 0, 255), 2)
         return angle
 
-    
     def correctForm(self, img, angles, thresholds, draw=True):
         is_correct_form = all(abs(angle) >= threshold for angle, threshold in zip(angles, thresholds))
         color = (0, 255, 0) if is_correct_form else (0, 0, 255)
@@ -103,3 +102,9 @@ class ExerciseLogic:
                 angle = self.findAngle(img, idx1, idx2, idx2 + 1, draw=False)
                 cv2.putText(img, str(int(angle)), (x2 - 50, y2 + 50), cv2.FONT_HERSHEY_PLAIN, 2, color, 2)
         return is_correct_form
+    
+    def get_angles_and_thresholds(self, frame) -> tuple[list[float], list[int]]:
+        raise NotImplementedError
+    
+    def process_specific_angles(self, frame) -> None:
+        raise NotImplementedError
