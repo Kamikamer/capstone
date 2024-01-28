@@ -23,8 +23,8 @@ class PushupLogic(ExerciseLogic):
                 self.direction = 1
         else:
             self.feedback = "Fix Form"
-            sp = SoundPlayer()
-            sp.play_sound()
+            # sp = SoundPlayer()
+            # sp.play_sound()
         if elbow >= 160 and shoulder >= 40 and hip >= 160:
             self.feedback = "Down"
             if self.direction == 1:
@@ -32,5 +32,5 @@ class PushupLogic(ExerciseLogic):
                 self.direction = 0
         else:
             self.feedback = "Fix Form"
-            sp = SoundPlayer()
-            sp.play_sound()
+            # sp = SoundPlayer()
+            # sp.play_sound()
