@@ -1,44 +1,55 @@
 from typing import Literal
 import cv2
+from posture_fit_algorithm import Pushup
 # from posture_fit_algorithm.Detector2 import ExerciseLogic
 from posture_fit_development.Sound import SoundPlayer
 # from posture_fit_algorithm.Squads import SquadsLogic
 # from posture_fit_development.Webcam import ExerciseLogic
 import threading
 from icecream import ic
+import cv2
+import time
+import tkinter as tk
+from tkinter import messagebox
 
 
 time_previous = 0
 time_current = 0
 
-class Animal:
-    def __init__(self, name):
-        self.name = name
-        self.sp = SoundPlayer()
+# def push_up_counter():
+#     cap = cv2.VideoCapture(0)
+#     exercise_logic = Pushup.PushupLogic("Pushup")
+#     while cap.isOpened():
+#         _, frame = cap.read()
+#         frame = cv2.flip(frame, 1)
+#         exercise_logic.process_frame(frame)
+#     cap.release()
+#     cv2.destroyAllWindows()
 
-    def speak(self):
-        pass
-
-
-class Dog(Animal):
-    def speak(self) -> str:
-        self.sp.play_sound("dog")
-        return "Woof!"
-
-
-class Cat(Animal):
-    def speak(self) -> str:
-        self.sp.play_sound("cat")
-        return "Meow!"
+# def start_push_up_counter():
+#     messagebox.showinfo("Pushup Counter", "Pushup Counter will start. Press 'q' to exit.")
+#     push_up_counter()
 
 if __name__ == "__main__":
+    # root = tk.Tk()
+    # root.title("Pushup Counter")
 
-    # Usage
-    cat = Cat("Whiskers")
-    dog = Dog("Buddy")
+    # start_button = tk.Button(root, text="Start Pushup Counter", command=start_push_up_counter)
+    # start_button = tk.Button(root, text="Start Situps Counter", command=start_push_up_counter)
+    # # start_button = tk.Button(root, text="Start Pushup Counter", command=start_push_up_counter)
+    # start_button.pack(pady=20)
 
-    print(dog.name)  
-    print(dog.speak())  
+    # root.mainloop()
 
-    print(cat.name)  
-    print(cat.speak())  
+    cap = cv2.VideoCapture(0)
+    exercise_logic = Pushup.PushupLogic("Pushup")
+    while cap.isOpened():
+        response, frame = cap.read()
+        frame = cv2.flip(frame, 1)
+        exercise_logic.process_frame(frame)
+
+        if cv2.waitKey(1) & 0xFF == ord('q'):
+            break
+    cap.release()
+    cv2.destroyAllWindows()
+

@@ -1,3 +1,5 @@
+from pickletools import float8
+from typing import NamedTuple
 import cv2
 import posture_fit_algorithm.Detector as Detector
 import mediapipe
@@ -5,31 +7,51 @@ import math
 import time
 from icecream import ic
 
+from posture_fit_development.Sound import SoundPlayer
+from mediapipe.python.solutions import pose, drawing_utils
+
 class ExerciseLogic:
-    def __init__(self, exercise_name):
+    def __init__(self, exercise_name, sound_type) -> None:
         self.exercise_name = exercise_name
-        self.mpDraw = mediapipe.solutions.drawing_utils
-        self.mpPose = mediapipe.solutions.pose
-        self.pose = self.mpPose.Pose()
-        self.count = 0
-        self.direction = 0
-        self.form = 0
-        self.time_previous = 0
-        self.feedback = "Fix Form"
-        self.lmList = []
+        self._setup_variables()
+        self._setup_sound_player(sound_type=sound_type)
+        self._setup_mppose()
+        ic.configureOutput(prefix=f'{self.exercise_name} Logic (ツ)_/¯ ', includeContext=True)
+
+    def _setup_sound_player(self, sound_type) -> None:
+        self.sound_type = sound_type
+        self.sp = SoundPlayer()
+    
+    def _setup_mppose(self) -> None:
+        self.mpPose = pose
+        self.mpDraw = drawing_utils
+        self.pose = self.mpPose.Pose(static_image_mode=False, model_complexity=1, smooth_landmarks=True, enable_segmentation=False, smooth_segmentation=True, min_detection_confidence=0.5, min_tracking_confidence=0.5)
+    
+    def _setup_variables(self) -> None:
+        self.form: int = 0
+        self.direction: int = 0
+        self.fps: float = 0
+        self.count: float = 0
+        self.time_previous: float = 0
+        self.feedback: str | None = None
+        self.lmList: list = []
+        self.fps_history: list[int | float] = []
+        self.results: NamedTuple | None = None
+
+    def update_fps_time(self) -> float:
+        time_current: float = time.time()
+        fps: float = 1 / (time_current - self.time_previous)
+        self.time_previous: float = time_current
+        self.fps: float = fps
+        return fps
 
     def process_frame(self, frame):
-        frame_RGB = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
-        time_current = time.time()
-        fps = 1 / (time_current - self.time_previous)
-        self.time_previous = time_current
-
+        _ = self.update_fps_time() # Updates self.fps
         img = self.findPose(frame, False)
-        self.lmList = self.findPosition(frame, False)
-        ic("Huh")
+        lmList = self.findPosition(frame, False)
         angles, thresholds = self.get_angles_and_thresholds(frame)
 
-        if len(self.lmList) != 0:
+        if len(lmList) != 0:
             is_correct_form = self.correctForm(frame, angles, thresholds)
 
             if is_correct_form:
@@ -38,34 +60,30 @@ class ExerciseLogic:
             if self.form == 1:
                 self.process_specific_angles(frame)
 
-            cv2.putText(frame,f'counter:{str(int(self.count))}', (25, 620), cv2.FONT_HERSHEY_PLAIN, 3, (0,0,0), 3)
-            cv2.putText(frame,f'fps:{str(int(fps))}', (10, 70), cv2.FONT_HERSHEY_PLAIN, 3, (0, 0, 255), 3)
+            cv2.putText(frame, f'counter:{str(int(self.count))}', (25, 620), cv2.FONT_HERSHEY_PLAIN, 3, (0,0,0), 3)
+            cv2.putText(frame, f'fps:{str(int(self.fps))}', (10, 70), cv2.FONT_HERSHEY_PLAIN, 3, (0, 0, 255), 3)
 
         cv2.imshow(f'{self.exercise_name} counter', frame)
 
     def findPose(self, img, draw=True):
         imgRGB = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
         self.results = self.pose.process(imgRGB)
-        if self.results.pose_landmarks:
+        if self.results.pose_landmarks:  # pytype: disable=attribute-error # type: ignore
             if draw:
-                self.mpDraw.draw_landmarks(img, self.results.pose_landmarks, self.mpPose.POSE_CONNECTIONS)
+                self.mpDraw.draw_landmarks(img, self.results.pose_landmarks, self.mpPose.POSE_CONNECTIONS)  # pytype: disable=attribute-error # type: ignore
         return img
 
     def findPosition(self, img, draw=True) -> list:
-        lmList = []
-        if self.results.pose_landmarks:
-            for id, lm in enumerate(self.results.pose_landmarks.landmark):
+        if self.results.pose_landmarks: # type: ignore
+            for id, lm in enumerate(self.results.pose_landmarks.landmark): # type: ignore
                 h, w, c = img.shape
                 cx, cy = int(lm.x * w), int(lm.y * h)
-                lmList.append([id, cx, cy])
+                self.lmList.append([id, cx, cy])
                 if draw:
                     cv2.circle(img, (cx, cy), 5, (255, 0, 0), cv2.FILLED)
-        return lmList
+        return self.lmList
 
-    def findAngle(self, img, p1, p2, p3, draw=True):
-        print("="*10)
-        ic(self.lmList)
-        print("="*10)
+    def findAngle(self, img, p1, p2, p3, draw=True) -> float:
         x1, y1 = self.lmList[p1][1:]
         x2, y2 = self.lmList[p2][1:]
         x3, y3 = self.lmList[p3][1:]
@@ -83,7 +101,7 @@ class ExerciseLogic:
             cv2.putText(img, str(int(angle)), (x2 - 50, y2 + 50), cv2.FONT_HERSHEY_PLAIN, 2, (0, 0, 255), 2)
         return angle
 
-    def correctForm(self, img, angles, thresholds, draw=True):
+    def correctForm(self, img, angles, thresholds, draw=True) -> bool:
         is_correct_form = all(abs(angle) >= threshold for angle, threshold in zip(angles, thresholds))
         color = (0, 255, 0) if is_correct_form else (0, 0, 255)
         draw_lines_indices = [15, 13, 11, 23, 25]
