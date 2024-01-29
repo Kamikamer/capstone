@@ -1,3 +1,5 @@
+from icecream import ic
+
 class Car:
     def __init__(self, make, model) -> None:
         self.make = make
@@ -7,22 +9,22 @@ class Car:
 
     def start(self) -> None:
         self._engine.start()
-        self.print_status()
+        self.status_menu()
 
-    def print_status(self) -> None:
+    def status_menu(self) -> None:
         engine_status = self._engine.status()
         wheel_status = self._wheel.status()
-        print(f"Reporting status: {engine_status}, {wheel_status}")
+        ic(f"Reporting status: {engine_status}, {wheel_status}")
 
     def drive(self) -> None:
-        print(f"The {self.make} {self.model} is now moving.")
+        ic(f"The {self.make} {self.model} is now moving.")
     
 class Engine:
     def start(self) -> None:
-        print("Engine started")
+        ic("Engine started")
 
     def stop(self) -> None:
-        print("Engine stopped")
+        ic("Engine stopped")
     
     def status(self) -> str:
         return "OK"

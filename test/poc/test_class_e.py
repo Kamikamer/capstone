@@ -1,3 +1,5 @@
+from icecream import ic
+
 class MagicBox:
     def __init__(self):
         self._items = []
@@ -16,6 +18,7 @@ class MagicBox:
         return self.__items
 
 if __name__ == "__main__":
+  ic.configureOutput(prefix='Private variables (ツ)_/¯ ')
   my_box = MagicBox()
 
   # Trying to directly access the private attribute (will result in an error)
@@ -25,13 +28,13 @@ if __name__ == "__main__":
   my_box.add_item("Magical wand")
 
   # # Getting items through a method
-  # print("Items in the box:", my_box._items) # ['Gold coin', 'Magical wand'] <- works
+  # ic("Items in the box:", my_box._items) # ['Gold coin', 'Magical wand'] <- works
 
-  print(f"Items with 1 underscores: {my_box.get_items()}")
+  ic(f"Items with 1 underscores: {my_box.get_items()}")
   try:
-    print(my_box.__items) # Errors, this is an idealogy of private variable
+    ic(my_box.__items) # Errors, this is an idealogy of private variable
     pass
   except AttributeError as e:
     # raise e
     pass
-  print(f"Items with 2 underscores: {my_box.get__items()}")
+  ic(f"Items with 2 underscores: {my_box.get__items()}")
