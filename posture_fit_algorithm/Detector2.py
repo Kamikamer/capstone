@@ -60,7 +60,7 @@ class ExerciseLogic:
             if self.form == 1:
                 self.process_specific_angles(frame)
 
-            cv2.putText(frame, f'counter:{str(int(self.count))}', (25, 620), cv2.FONT_HERSHEY_PLAIN, 3, (0,0,0), 3)
+            cv2.putText(frame, f'counter:{str(int(self.count))}', (10, 480), cv2.FONT_HERSHEY_PLAIN, 3, (0,0,0), 3)
             cv2.putText(frame, f'fps:{str(int(self.fps))}', (10, 70), cv2.FONT_HERSHEY_PLAIN, 3, (0, 0, 255), 3)
 
         cv2.imshow(f'{self.exercise_name} counter', frame)
@@ -74,6 +74,7 @@ class ExerciseLogic:
         return img
 
     def findPosition(self, img, draw=True) -> list:
+        self.lmList = []
         if self.results.pose_landmarks: # type: ignore
             for id, lm in enumerate(self.results.pose_landmarks.landmark): # type: ignore
                 h, w, c = img.shape
@@ -104,15 +105,16 @@ class ExerciseLogic:
     def correctForm(self, img, angles, thresholds, draw=True) -> bool:
         is_correct_form = all(abs(angle) >= threshold for angle, threshold in zip(angles, thresholds))
         color = (0, 255, 0) if is_correct_form else (0, 0, 255)
-        draw_lines_indices = [15, 13, 11, 23, 25]
-        for idx in draw_lines_indices:
-            if idx < len(self.lmList):
+        if draw:
+           draw_lines_indices = [15, 13, 11, 23, 25]
+           for idx in draw_lines_indices:
+              if idx < len(self.lmList):
                 lm_id, cx, cy = self.lmList[idx]
                 cv2.circle(img, (cx, cy), 5, color, cv2.FILLED)
                 cv2.circle(img, (cx, cy), 15, color, 2)
-        for i in range(len(draw_lines_indices) - 1):
-            idx1, idx2 = draw_lines_indices[i], draw_lines_indices[i + 1]
-            if idx1 < len(self.lmList) and idx2 < len(self.lmList):
+           for i in range(len(draw_lines_indices) - 1):
+               idx1, idx2 = draw_lines_indices[i], draw_lines_indices[i + 1]
+               if idx1 < len(self.lmList) and idx2 < len(self.lmList):
                 x1, y1 = self.lmList[idx1][1:]
                 x2, y2 = self.lmList[idx2][1:]
                 cv2.line(img, (x1, y1), (x2, y2), color, 3)
