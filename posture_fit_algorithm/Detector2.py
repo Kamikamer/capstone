@@ -85,22 +85,26 @@ class ExerciseLogic:
         return self.lmList
 
     def findAngle(self, img, p1, p2, p3, draw=True) -> float:
-        x1, y1 = self.lmList[p1][1:]
-        x2, y2 = self.lmList[p2][1:]
-        x3, y3 = self.lmList[p3][1:]
-        angle = math.degrees(math.atan2(y3 - y2, x3 - x2) - math.atan2(y1 - y2, x1 - x2))
-        if angle < 0:
-            angle += 360
-            if angle > 180:
+        if len(self.lmList) >= max(p1, p2, p3) + 1:  # Check if the list has enough elements
+            x1, y1 = self.lmList[p1][1:]
+            x2, y2 = self.lmList[p2][1:]
+            x3, y3 = self.lmList[p3][1:]
+            angle = math.degrees(math.atan2(y3 - y2, x3 - x2) - math.atan2(y1 - y2, x1 - x2))
+            if angle < 0:
+                angle += 360
+                if angle > 180:
+                    angle = 360 - angle
+            elif angle > 180:
                 angle = 360 - angle
-        elif angle > 180:
-            angle = 360 - angle
-        if draw:
-            cv2.line(img, (x1, y1), (x2, y2), (255, 255, 255), 5)
-            cv2.circle(img, (x1, y1), 5, (0, 0, 255), cv2.FILLED)
-            cv2.circle(img, (x1, y1), 15, (0, 0, 255), 2)
-            cv2.putText(img, str(int(angle)), (x2 - 50, y2 + 50), cv2.FONT_HERSHEY_PLAIN, 2, (0, 0, 255), 2)
-        return angle
+            if draw:
+                cv2.line(img, (x1, y1), (x2, y2), (255, 255, 255), 5)
+                cv2.circle(img, (x1, y1), 5, (0, 0, 255), cv2.FILLED)
+                cv2.circle(img, (x1, y1), 15, (0, 0, 255), 2)
+                cv2.putText(img, str(int(angle)), (x2 - 50, y2 + 50), cv2.FONT_HERSHEY_PLAIN, 2, (0, 0, 255), 2)
+            return angle
+        else:
+            # Handle case where lmList does not have enough elements for the given indices
+            return 0.0  # or any appropriate default value
 
     def correctForm(self, img, angles, thresholds, draw=True) -> bool:
         is_correct_form = all(abs(angle) >= threshold for angle, threshold in zip(angles, thresholds))
