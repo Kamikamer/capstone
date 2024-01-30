@@ -110,7 +110,7 @@ class ExerciseLogic:
         is_correct_form = all(abs(angle) >= threshold for angle, threshold in zip(angles, thresholds))
         color = (0, 255, 0) if is_correct_form else (0, 0, 255)
         if draw:
-           draw_lines_indices = [15, 13, 11, 23, 25]
+           draw_lines_indices = [13, 11, 23, 25]
            for idx in draw_lines_indices:
               if idx < len(self.lmList):
                 lm_id, cx, cy = self.lmList[idx]
