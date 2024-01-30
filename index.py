@@ -1,6 +1,6 @@
 from typing import Literal
 import cv2
-from posture_fit_algorithm import Pushup
+from posture_fit_algorithm.Pushup import PushupLogic
 from posture_fit_algorithm import Squats
 from posture_fit_algorithm import Situp
 # from posture_fit_algorithm.Detector2 import ExerciseLogic
@@ -44,7 +44,7 @@ if __name__ == "__main__":
     # root.mainloop()
 
     cap = cv2.VideoCapture(0)
-    exercise_logic = Situp.SitupLogic("Situp")
+    exercise_logic = PushupLogic('Pushup')
     while cap.isOpened():
         response, frame = cap.read()
         frame = cv2.flip(frame, 1)

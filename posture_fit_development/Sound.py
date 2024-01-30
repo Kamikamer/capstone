@@ -37,8 +37,8 @@ class SoundPlayer:
             file_name (str, optional): The name of the sound file to be played. Defaults to None. Passes arg to sound() method.
         """
         epoch = time.time()
-        print("=============== Sound ===============")
-        ic(datetime.fromtimestamp(epoch).strftime('%H:%M:%S'))  # type: ignore
+        # print("=============== Sound ===============")
+        # ic(datetime.fromtimestamp(epoch).strftime('%H:%M:%S'))  # type: ignore
         # Check if enough time has passed since the last call
         if epoch - self.last_play_time >= self.cooldown_duration:
             # Update the last play time
@@ -46,8 +46,9 @@ class SoundPlayer:
             # Play the sound
             self.sound(file_name)
         else:
-            ic("Cooldown period active, cannot play sound yet")
-        print("=====================================")
+            # ic("Cooldown period active, cannot play sound yet")
+            pass
+        # print("=====================================")
 
     def sound(self, specific_file=None) -> None:
         """
