@@ -84,46 +84,64 @@ class ExerciseLogic:
                     cv2.circle(img, (cx, cy), 5, (255, 0, 0), cv2.FILLED)
         return self.lmList
 
+
+
     def findAngle(self, img, p1, p2, p3, draw=True) -> float:
         if len(self.lmList) >= max(p1, p2, p3) + 1:  # Check if the list has enough elements
             x1, y1 = self.lmList[p1][1:]
             x2, y2 = self.lmList[p2][1:]
             x3, y3 = self.lmList[p3][1:]
+            
+            # Calculate angle using atan2
             angle = math.degrees(math.atan2(y3 - y2, x3 - x2) - math.atan2(y1 - y2, x1 - x2))
-            if angle < 0:
-                angle += 360
-                if angle > 180:
-                    angle = 360 - angle
-            elif angle > 180:
+            
+            # Normalize angle to be within [0, 360) degrees
+            angle = angle % 360
+            
+            # Ensure angle is within [0, 180) degrees
+            if angle >= 180:
                 angle = 360 - angle
+            
             if draw:
+                # Draw lines and circles on the image
                 cv2.line(img, (x1, y1), (x2, y2), (255, 255, 255), 5)
                 cv2.circle(img, (x1, y1), 5, (0, 0, 255), cv2.FILLED)
                 cv2.circle(img, (x1, y1), 15, (0, 0, 255), 2)
                 cv2.putText(img, str(int(angle)), (x2 - 50, y2 + 50), cv2.FONT_HERSHEY_PLAIN, 2, (0, 0, 255), 2)
+            
             return angle
         else:
-            # Handle case where lmList does not have enough elements for the given indices
-            return 0.0  # or any appropriate default value
+            return 0.0  # Return default angle if the list doesn't have enough elements
 
     def correctForm(self, img, angles, thresholds, draw=True) -> bool:
-        is_correct_form = all(abs(angle) >= threshold for angle, threshold in zip(angles, thresholds))
+        is_correct_form = all(abs(angle) < threshold for angle, threshold in zip(angles, thresholds))
         color = (0, 255, 0) if is_correct_form else (0, 0, 255)
+        
+        # Check if there's a change from correct to incorrect form
+        if self.prev_form_correct and not is_correct_form:
+            sp = SoundPlayer()
+            sp.play_sound("IF_1")  # Play the sound
+            self.prev_form_correct = False  # Update the previous form state
+        
+        # Update previous form state
+        self.prev_form_correct = is_correct_form
+
         if draw:
-           draw_lines_indices = [13, 11, 23, 25]
-           for idx in draw_lines_indices:
-              if idx < len(self.lmList):
-                lm_id, cx, cy = self.lmList[idx]
-                cv2.circle(img, (cx, cy), 5, color, cv2.FILLED)
-                cv2.circle(img, (cx, cy), 15, color, 2)
-           for i in range(len(draw_lines_indices) - 1):
-               idx1, idx2 = draw_lines_indices[i], draw_lines_indices[i + 1]
-               if idx1 < len(self.lmList) and idx2 < len(self.lmList):
-                x1, y1 = self.lmList[idx1][1:]
-                x2, y2 = self.lmList[idx2][1:]
-                cv2.line(img, (x1, y1), (x2, y2), color, 3)
-                angle = self.findAngle(img, idx1, idx2, idx2 + 1, draw=False)
-                cv2.putText(img, str(int(angle)), (x2 - 50, y2 + 50), cv2.FONT_HERSHEY_PLAIN, 2, color, 2)
+            draw_lines_indices = [13, 11, 23, 25,27]
+            for idx in draw_lines_indices:
+                if idx < len(self.lmList):
+                    lm_id, cx, cy = self.lmList[idx]
+                    cv2.circle(img, (cx, cy), 5, color, cv2.FILLED)
+                    cv2.circle(img, (cx, cy), 15, color, 2)
+            for i in range(len(draw_lines_indices) - 1):
+                idx1, idx2 = draw_lines_indices[i], draw_lines_indices[i + 1]
+                if idx1 < len(self.lmList) and idx2 < len(self.lmList):
+                    x1, y1 = self.lmList[idx1][1:]
+                    x2, y2 = self.lmList[idx2][1:]
+                    cv2.line(img, (x1, y1), (x2, y2), color, 3)
+                    angle = self.findAngle(img, idx1, idx2, idx2 + 1, draw=False)
+                    cv2.putText(img, str(int(angle)), (x2 - 50, y2 + 50), cv2.FONT_HERSHEY_PLAIN, 2, color, 2)
+        
         return is_correct_form
     
     def get_angles_and_thresholds(self, frame) -> tuple[list[float], list[int]]:
