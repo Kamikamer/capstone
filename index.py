@@ -9,12 +9,12 @@ import tkinter as tk
 from tkinter import Label, Button
 from tkinter import messagebox
 from PIL import Image, ImageTk
-
+import math
 
 time_previous = 0
 time_current = 0
 rem = 16
-width, height = 114.625*rem, 56*rem
+width, height = int(114.625*rem), int(56*rem)
 
 
 def open_camera():
@@ -63,9 +63,8 @@ app.state("zoomed")
 
 app.bind('<Escape>', lambda e: app.quit())
 
-
-label_widget = Label(app, width=width, height=height)
-label_widget.pack(padx=2.6 * rem, pady=2.6 * rem)
+label_widget = Label(app)
+label_widget.pack()
 
 button1 = Button(app, text="Open Camera",
                  command=open_camera)
