@@ -44,7 +44,6 @@ if __name__ == "__main__":
     # root.mainloop()
 
     cap = cv2.VideoCapture(0)
-    exercise_logic = SitupLogic("Situp", "IF_2")
     exercise_logic = PushupLogic("Pushup")
     while cap.isOpened():
         response, frame = cap.read()

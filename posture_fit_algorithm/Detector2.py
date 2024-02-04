@@ -38,7 +38,7 @@ class ExerciseLogic:
         self.fps_history: list[int | float] = []
         self.results: NamedTuple | None = None
 
-    def play_sound_async(self) -> None | NoReturn():
+    def play_sound_async(self) -> None | NoReturn:
         try:
             self.sp.play_sound(self.sound_type)
         except Exception as e:
