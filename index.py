@@ -12,47 +12,38 @@ from icecream import ic
 import cv2
 import time
 import tkinter as tk
+from tkinter import Label, Button
 from tkinter import messagebox
+from PIL import Image, ImageTk 
+
+
+def open_camera() -> None: 
+    _, frame = cap.read() 
+    captured_image = Image.fromarray(opencv_image) 
+    opencv_image = cv2.cvtColor(frame, cv2.COLOR_BGR2RGBA) 
+    photo_image = ImageTk.PhotoImage(image=captured_image) 
+    label_widget.configure(image=photo_image) 
+    label_widget.after(10, open_camera) 
 
 
 time_previous = 0
 time_current = 0
+rem = 16
+width, height = 114*rem, 56*rem 
 
-# def push_up_counter():
-#     cap = cv2.VideoCapture(0)
-#     exercise_logic = Pushup.PushupLogic("Pushup")
-#     while cap.isOpened():
-#         _, frame = cap.read()
-#         frame = cv2.flip(frame, 1)
-#         exercise_logic.process_frame(frame)
-#     cap.release()
-#     cv2.destroyAllWindows()
 
-# def start_push_up_counter():
-#     messagebox.showinfo("Pushup Counter", "Pushup Counter will start. Press 'q' to exit.")
-#     push_up_counter()
+cap = cv2.VideoCapture(0)
+cap.set(cv2.CAP_PROP_FRAME_WIDTH, width) 
+cap.set(cv2.CAP_PROP_FRAME_HEIGHT, height) 
 
-if __name__ == "__main__":
-    # root = tk.Tk()
-    # root.title("Pushup Counter")
+app = tk.Tk() 
+app.geometry("1920x1080")
+app.bind('<Escape>', lambda e: app.quit()) 
+label_widget = Label(app) 
+label_widget.pack() 
 
-    # start_button = tk.Button(root, text="Start Pushup Counter", command=start_push_up_counter)
-    # start_button = tk.Button(root, text="Start Situps Counter", command=start_push_up_counter)
-    # # start_button = tk.Button(root, text="Start Pushup Counter", command=start_push_up_counter)
-    # start_button.pack(pady=20)
+button1 = Button(app, text="Open Camera", 
+                 command=open_camera) 
+button1.pack() 
 
-    # root.mainloop()
-
-    cap = cv2.VideoCapture(0)
-    exercise_logic = SitupLogic("Situp", "IF_2")
-    exercise_logic = PushupLogic("Pushup")
-    while cap.isOpened():
-        response, frame = cap.read()
-        frame = cv2.flip(frame, 1)
-        exercise_logic.process_frame(frame)
-
-        if cv2.waitKey(1) & 0xFF == ord('q'):
-            break
-    cap.release()
-    cv2.destroyAllWindows()
-
+app.mainloop() 
