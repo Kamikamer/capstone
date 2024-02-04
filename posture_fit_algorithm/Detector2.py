@@ -1,11 +1,11 @@
-from pickletools import float8
-from typing import NamedTuple
+from typing import NamedTuple, NoReturn
 import cv2
 import posture_fit_algorithm.Detector as Detector
 import mediapipe
 import math
 import time
 from icecream import ic
+import traceback
 
 from posture_fit_development.Sound import SoundPlayer
 from mediapipe.python.solutions import pose, drawing_utils
@@ -38,6 +38,15 @@ class ExerciseLogic:
         self.fps_history: list[int | float] = []
         self.results: NamedTuple | None = None
 
+    def play_sound_async(self) -> None | NoReturn():
+        try:
+            self.sp.play_sound(self.sound_type)
+        except Exception as e:
+            print("Error playing sound: ", e)
+            print(traceback.format_exc())
+            print("-" * 50)
+            raise e
+        
     def update_fps_time(self) -> float:
         time_current: float = time.time()
         fps: float = 1 / (time_current - self.time_previous)
@@ -118,10 +127,10 @@ class ExerciseLogic:
         color = (0, 255, 0) if is_correct_form else (0, 0, 255)
         
         # Check if there's a change from correct to incorrect form
-        if self.prev_form_correct and not is_correct_form:
-            sp = SoundPlayer()
-            sp.play_sound("IF_1")  # Play the sound
-            self.prev_form_correct = False  # Update the previous form state
+        # if self.prev_form_correct and not is_correct_form:
+        #     sp = SoundPlayer()
+        #     sp.play_sound("IF_1")  # Play the sound
+        #     self.prev_form_correct = False  # Update the previous form state
         
         # Update previous form state
         self.prev_form_correct = is_correct_form
