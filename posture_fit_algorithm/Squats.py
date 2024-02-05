@@ -1,4 +1,4 @@
-from posture_fit_algorithm.Detector2 import ExerciseLogic
+from posture_fit_algorithm.Gem import ExerciseLogic
 from posture_fit_development.Sound import SoundPlayer
 class SquatsLogic(ExerciseLogic):
     def __init__(self, exercise_name) -> None:
