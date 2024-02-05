@@ -2,6 +2,7 @@ from typing import Literal
 import cv2
 from posture_fit_algorithm.Pushup import PushupLogic
 from posture_fit_algorithm.Situp import SitupLogic
+from posture_fit_algorithm.Squats import SquatsLogic
 from icecream import ic
 import cv2
 import time
@@ -26,7 +27,7 @@ def open_camera():
     # Convert image from one color space to other
     opencv_image = cv2.cvtColor(frame, cv2.COLOR_BGR2RGBA)
 
-    exercise_logic = PushupLogic("Pushup")
+    exercise_logic = SquatsLogic("Squats")
     exercise_logic.process_frame(opencv_image)
 
     # Capture the latest frame and transform to image
@@ -66,8 +67,7 @@ app.bind('<Escape>', lambda e: app.quit())
 label_widget = Label(app)
 label_widget.pack()
 
-button1 = Button(app, text="Open Camera",
-                 command=open_camera)
+button1 = Button(app, text="Open Camera",command=open_camera)
 button1.pack()
 
 app.mainloop()

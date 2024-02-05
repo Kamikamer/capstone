@@ -16,7 +16,7 @@ class SquatsLogic(ExerciseLogic):
     def process_specific_angles(self, frame) -> None:
         knee = self.findAngle(frame,23,25,27,draw=False)
         hip = self.findAngle(frame,11,23,25,draw=False)
-        if knee > 90 and hip < 130:
+        if knee > 170 and hip > 170:
             self.feedback = "Up"
             if self.direction == 0:
                 self.count += 0.5
