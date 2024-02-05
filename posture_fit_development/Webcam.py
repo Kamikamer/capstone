@@ -1,5 +1,5 @@
 import cv2
-from posture_fit_algorithm.Detector2 import ExerciseLogic
+from posture_fit_algorithm.Gem import ExerciseLogic
 from posture_fit_algorithm.Pushup import PushupLogic
 from posture_fit_algorithm.Situp import SitupLogic
 #from posture_fit_algorithm.Squads import SquadsLogic
