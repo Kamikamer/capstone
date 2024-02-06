@@ -1,19 +1,7 @@
-from typing import Literal
 import cv2
-from posture_fit_algorithm.Pushup import PushupLogic
-from posture_fit_algorithm.Squats import SquatsLogic
-from posture_fit_algorithm.Situp import SitupLogic
-# from posture_fit_algorithm.Detector2 import ExerciseLogic
-from posture_fit_development.Sound import SoundPlayer
-# from posture_fit_algorithm.Squads import SquadsLogic
-# from posture_fit_development.Webcam import ExerciseLogic
-import threading
 from icecream import ic
-import cv2
 import time
-import tkinter as tk
-from tkinter import messagebox
-
+from posture_fit_algorithm.Pushup import PushupLogic
 
 time_previous = 0
 time_current = 0

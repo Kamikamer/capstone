@@ -6,7 +6,7 @@ import math
 import time
 from icecream import ic
 import traceback
-
+import threading
 from posture_fit_development.Sound import SoundPlayer
 from mediapipe.python.solutions import pose, drawing_utils
 
