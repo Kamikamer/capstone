@@ -19,7 +19,7 @@ class SitupLogic(ExerciseLogic):
         knee = self.findAngle(frame, 23, 25, 27, draw=False)
         hip = self.findAngle(frame, 11, 23, 25, draw=False)
 
-        if knee > 90 and hip > 100:
+        if knee < 90 and hip > 100:
             self.feedback = "Up"
             if self.direction == 0:
                 self.count += 0.5
@@ -27,7 +27,7 @@ class SitupLogic(ExerciseLogic):
         else:
             self.feedback = "Fix Form"
             
-        if knee < 85 and hip < 90 :
+        if knee < 90 and hip < 90 :
             self.feedback = "Down"
             if self.direction == 1:
                 self.count += 0.5
