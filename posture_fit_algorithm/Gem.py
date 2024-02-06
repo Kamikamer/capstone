@@ -1,7 +1,5 @@
 from typing import NamedTuple, NoReturn
 import cv2
-import posture_fit_algorithm.Detector as Detector
-import mediapipe
 import math
 import time
 from icecream import ic
@@ -33,6 +31,7 @@ class ExerciseLogic:
         self.fps: float = 0
         self.count: float = 0
         self.time_previous: float = 0
+        self.time_startup: float = 0
         self.feedback: str | None = None
         self.lmList: list = []
         self.fps_history: list[int | float] = []
@@ -56,6 +55,8 @@ class ExerciseLogic:
 
     def process_frame(self, frame):
         _ = self.update_fps_time() # Updates self.fps
+        if self.time_startup >= time.time() + 5000 and self.counter == 1:
+            self.counter = 0
         img = self.findPose(frame, False)
         lmList = self.findPosition(frame, False)
         angles, thresholds = self.get_angles_and_thresholds(frame)
@@ -126,11 +127,9 @@ class ExerciseLogic:
         is_correct_form = all(abs(angle) < threshold for angle, threshold in zip(angles, thresholds))
         color = (0, 255, 0) if is_correct_form else (0, 0, 255)
         
-        # Check if there's a change from correct to incorrect form
-        # if self.prev_form_correct and not is_correct_form:
-        #     sp = SoundPlayer()
-        #     sp.play_sound("IF_1")  # Play the sound
-        #     self.prev_form_correct = False  # Update the previous form state
+        if self.prev_form_correct and not is_correct_form:
+             threading.Thread(target=self.play_sound_async).start()  # Play the sound
+             self.prev_form_correct = False  # Update the previous form state
         
         # Update previous form state
         self.prev_form_correct = is_correct_form
