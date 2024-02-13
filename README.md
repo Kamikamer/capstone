@@ -22,7 +22,3 @@ Reinstall playsound (lib) with version 1.2.2<br>
 
 If you face errors with icecream, you might need to install it with 
 `pip install icecream` instead of `conda install icecream`
-
-![alt text](image.png)
-![alt text](image-1.png)
-![alt text](image-2.png)
