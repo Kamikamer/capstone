@@ -28,7 +28,7 @@ class PushupLogic(ExerciseLogic):
                 self.direction = 1
             else:
                 self.feedback = "Fix Form"
-                threading.Thread(target=self.play_sound_async).start()
+
                 
         if elbow >= 160 and shoulder >= 40 and hip >= 160:
             self.feedback = "Down"
@@ -37,7 +37,6 @@ class PushupLogic(ExerciseLogic):
                 self.direction = 0
             else:
                 self.feedback = "Fix Form"
-                threading.Thread(target=self.play_sound_async).start()
 
     def process_frame(self, frame) -> None:
         return super().process_frame(frame=frame)
