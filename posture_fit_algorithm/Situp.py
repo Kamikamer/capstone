@@ -36,3 +36,6 @@ class SitupLogic(ExerciseLogic):
             self.feedback = "Fix Form"
             # sp = SoundPlayer()
             # sp.play_sound()
+
+    def process_frame(self, frame) -> None:
+        return super().process_frame(frame=frame)
