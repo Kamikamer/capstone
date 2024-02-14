@@ -1,3 +1,10 @@
+'''
+This file is used to test the project with just a webcam and no other tools like tkinter/pygame.
+It's purpose is to have a fresh run to be used as a base app and to make sure all other integrated part work together during system testing.
+This file can be used for integrated testing as well as unit testing or debugging.
+This file is NOT to be used for deployment purposes.
+All files in subdirectories are not meant to be used for deployment purposes and only development purposes and should not be ran directly but you can if you want.
+'''
 import cv2
 from posture_fit_algorithm.Gem import ExerciseLogic
 from posture_fit_algorithm.Pushup import PushupLogic
