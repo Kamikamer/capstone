@@ -2,11 +2,15 @@ from typing import NamedTuple, NoReturn
 import cv2
 import math
 import time
-from icecream import ic
 import traceback
 import threading
 from posture_fit_development.Sound import SoundPlayer
 import mediapipe as mp
+
+try:
+    from icecream import ic
+except ImportError:  # Graceful fallback if IceCream isn't installed.
+    ic = lambda *a: None if not a else (a[0] if len(a) == 1 else a)  # noqa
 
 class ExerciseLogic:
     def __init__(self, exercise_name: str, sound_type: str) -> None:
@@ -14,7 +18,10 @@ class ExerciseLogic:
         self._setup_variables()
         self._setup_sound_player(sound_type=sound_type)
         self._setup_mppose()
-        ic.configureOutput(prefix=f'{self.exercise_name} Logic (ツ)_/¯ ', includeContext=True)
+        try:
+            ic.configureOutput(prefix=f'{self.exercise_name} Logic (ツ)_/¯ ', includeContext=True)
+        except AttributeError:
+            pass
 
     def _setup_sound_player(self, sound_type) -> None:
         self.sound_type: str = sound_type

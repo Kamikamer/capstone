@@ -1,8 +1,15 @@
 import os
 import time
 from typing import Self
-from playsound import playsound
-from icecream import ic
+from playsound import playsound, PlaysoundException
+import sys
+
+try:
+    from icecream import ic
+    ic.configureOutput(includeContext=True, prefix='Booting (ツ)_/¯')
+except (ImportError, ModuleNotFoundError):
+    ic = lambda *a: None if not a else (a[0] if len(a) == 1 else a)  # noqa
+
 
 class SoundPlayer:
     def __new__(cls) -> Self:
