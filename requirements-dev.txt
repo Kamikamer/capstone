@@ -1,0 +1,4 @@
+icecream
+pyinstaller
+PyUpdater
+tufup
