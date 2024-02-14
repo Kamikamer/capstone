@@ -1,0 +1,1181 @@
+Folder PATH listing for volume AR-B450M-500GB-PRIVATE
+Volume serial number is EC01-074C
+D:.
+³   .gitignore
+³   index.py
+³   index.spec
+³   LICENSE
+³   README.md
+³   requirements.txt
+³   tree.txt
+³   __init__.py
+³   
+ÃÄÄÄassets
+³   ³   cat.wav
+³   ³   dog.wav
+³   ³   driver_error_sp.png
+³   ³   HISS.pod
+³   ³   IF_1.wav
+³   ³   IF_2.wav
+³   ³   note.wav
+³   ³   
+³   ÀÄÄÄmp3
+³           ElevenLabs_2024-01-21T10_20_10_Charlotte.mp3
+³           ElevenLabs_2024-01-21T10_20_31_Clyde.mp3
+³           note.mp3
+³           
+ÃÄÄÄbuild
+³   ÀÄÄÄindex
+³       ³   Analysis-00.toc
+³       ³   base_library.zip
+³       ³   COLLECT-00.toc
+³       ³   EXE-00.toc
+³       ³   index.exe
+³       ³   index.pkg
+³       ³   PKG-00.toc
+³       ³   PYZ-00.pyz
+³       ³   PYZ-00.toc
+³       ³   Tree-00.toc
+³       ³   Tree-01.toc
+³       ³   Tree-02.toc
+³       ³   warn-index.txt
+³       ³   xref-index.html
+³       ³   
+³       ÀÄÄÄlocalpycs
+³               pyimod01_archive.pyc
+³               pyimod02_importers.pyc
+³               pyimod03_ctypes.pyc
+³               pyimod04_pywin32.pyc
+³               struct.pyc
+³               
+ÃÄÄÄdist
+³   ³   index.exe
+³   ³   
+³   ÀÄÄÄindex
+³       ³   index.exe
+³       ³   
+³       ÀÄÄÄ_internal
+³           ³   api-ms-win-core-console-l1-1-0.dll
+³           ³   api-ms-win-core-datetime-l1-1-0.dll
+³           ³   api-ms-win-core-debug-l1-1-0.dll
+³           ³   api-ms-win-core-errorhandling-l1-1-0.dll
+³           ³   api-ms-win-core-file-l1-1-0.dll
+³           ³   api-ms-win-core-file-l1-2-0.dll
+³           ³   api-ms-win-core-file-l2-1-0.dll
+³           ³   api-ms-win-core-handle-l1-1-0.dll
+³           ³   api-ms-win-core-heap-l1-1-0.dll
+³           ³   api-ms-win-core-interlocked-l1-1-0.dll
+³           ³   api-ms-win-core-libraryloader-l1-1-0.dll
+³           ³   api-ms-win-core-localization-l1-2-0.dll
+³           ³   api-ms-win-core-memory-l1-1-0.dll
+³           ³   api-ms-win-core-namedpipe-l1-1-0.dll
+³           ³   api-ms-win-core-processenvironment-l1-1-0.dll
+³           ³   api-ms-win-core-processthreads-l1-1-0.dll
+³           ³   api-ms-win-core-processthreads-l1-1-1.dll
+³           ³   api-ms-win-core-profile-l1-1-0.dll
+³           ³   api-ms-win-core-rtlsupport-l1-1-0.dll
+³           ³   api-ms-win-core-string-l1-1-0.dll
+³           ³   api-ms-win-core-synch-l1-1-0.dll
+³           ³   api-ms-win-core-synch-l1-2-0.dll
+³           ³   api-ms-win-core-sysinfo-l1-1-0.dll
+³           ³   api-ms-win-core-timezone-l1-1-0.dll
+³           ³   api-ms-win-core-util-l1-1-0.dll
+³           ³   api-ms-win-crt-conio-l1-1-0.dll
+³           ³   api-ms-win-crt-convert-l1-1-0.dll
+³           ³   api-ms-win-crt-environment-l1-1-0.dll
+³           ³   api-ms-win-crt-filesystem-l1-1-0.dll
+³           ³   api-ms-win-crt-heap-l1-1-0.dll
+³           ³   api-ms-win-crt-locale-l1-1-0.dll
+³           ³   api-ms-win-crt-math-l1-1-0.dll
+³           ³   api-ms-win-crt-process-l1-1-0.dll
+³           ³   api-ms-win-crt-runtime-l1-1-0.dll
+³           ³   api-ms-win-crt-stdio-l1-1-0.dll
+³           ³   api-ms-win-crt-string-l1-1-0.dll
+³           ³   api-ms-win-crt-time-l1-1-0.dll
+³           ³   api-ms-win-crt-utility-l1-1-0.dll
+³           ³   base_library.zip
+³           ³   ffi.dll
+³           ³   LIBBZ2.dll
+³           ³   libcrypto-3-x64.dll
+³           ³   liblzma.dll
+³           ³   libssl-3-x64.dll
+³           ³   pyexpat.pyd
+³           ³   python311.dll
+³           ³   select.pyd
+³           ³   tcl86t.dll
+³           ³   tk86t.dll
+³           ³   ucrtbase.dll
+³           ³   unicodedata.pyd
+³           ³   VCRUNTIME140.dll
+³           ³   zlib.dll
+³           ³   _asyncio.pyd
+³           ³   _bz2.pyd
+³           ³   _cffi_backend.cp311-win_amd64.pyd
+³           ³   _ctypes.pyd
+³           ³   _decimal.pyd
+³           ³   _hashlib.pyd
+³           ³   _lzma.pyd
+³           ³   _multiprocessing.pyd
+³           ³   _overlapped.pyd
+³           ³   _queue.pyd
+³           ³   _socket.pyd
+³           ³   _ssl.pyd
+³           ³   _tkinter.pyd
+³           ³   
+³           ÃÄÄÄcv2
+³           ³       opencv_videoio_ffmpeg490_64.dll
+³           ³       
+³           ÃÄÄÄPIL
+³           ³       _imaging.cp311-win_amd64.pyd
+³           ³       _imagingcms.cp311-win_amd64.pyd
+³           ³       _imagingtk.cp311-win_amd64.pyd
+³           ³       _webp.cp311-win_amd64.pyd
+³           ³       
+³           ÃÄÄÄpywin32_system32
+³           ³       pywintypes311.dll
+³           ³       
+³           ÃÄÄÄtcl
+³           ³   ³   auto.tcl
+³           ³   ³   clock.tcl
+³           ³   ³   history.tcl
+³           ³   ³   init.tcl
+³           ³   ³   package.tcl
+³           ³   ³   parray.tcl
+³           ³   ³   safe.tcl
+³           ³   ³   tclIndex
+³           ³   ³   tm.tcl
+³           ³   ³   word.tcl
+³           ³   ³   
+³           ³   ÃÄÄÄencoding
+³           ³   ³       ascii.enc
+³           ³   ³       big5.enc
+³           ³   ³       cns11643.enc
+³           ³   ³       cp1250.enc
+³           ³   ³       cp1251.enc
+³           ³   ³       cp1252.enc
+³           ³   ³       cp1253.enc
+³           ³   ³       cp1254.enc
+³           ³   ³       cp1255.enc
+³           ³   ³       cp1256.enc
+³           ³   ³       cp1257.enc
+³           ³   ³       cp1258.enc
+³           ³   ³       cp437.enc
+³           ³   ³       cp737.enc
+³           ³   ³       cp775.enc
+³           ³   ³       cp850.enc
+³           ³   ³       cp852.enc
+³           ³   ³       cp855.enc
+³           ³   ³       cp857.enc
+³           ³   ³       cp860.enc
+³           ³   ³       cp861.enc
+³           ³   ³       cp862.enc
+³           ³   ³       cp863.enc
+³           ³   ³       cp864.enc
+³           ³   ³       cp865.enc
+³           ³   ³       cp866.enc
+³           ³   ³       cp869.enc
+³           ³   ³       cp874.enc
+³           ³   ³       cp932.enc
+³           ³   ³       cp936.enc
+³           ³   ³       cp949.enc
+³           ³   ³       cp950.enc
+³           ³   ³       dingbats.enc
+³           ³   ³       ebcdic.enc
+³           ³   ³       euc-cn.enc
+³           ³   ³       euc-jp.enc
+³           ³   ³       euc-kr.enc
+³           ³   ³       gb12345.enc
+³           ³   ³       gb1988.enc
+³           ³   ³       gb2312-raw.enc
+³           ³   ³       gb2312.enc
+³           ³   ³       iso2022-jp.enc
+³           ³   ³       iso2022-kr.enc
+³           ³   ³       iso2022.enc
+³           ³   ³       iso8859-1.enc
+³           ³   ³       iso8859-10.enc
+³           ³   ³       iso8859-11.enc
+³           ³   ³       iso8859-13.enc
+³           ³   ³       iso8859-14.enc
+³           ³   ³       iso8859-15.enc
+³           ³   ³       iso8859-16.enc
+³           ³   ³       iso8859-2.enc
+³           ³   ³       iso8859-3.enc
+³           ³   ³       iso8859-4.enc
+³           ³   ³       iso8859-5.enc
+³           ³   ³       iso8859-6.enc
+³           ³   ³       iso8859-7.enc
+³           ³   ³       iso8859-8.enc
+³           ³   ³       iso8859-9.enc
+³           ³   ³       jis0201.enc
+³           ³   ³       jis0208.enc
+³           ³   ³       jis0212.enc
+³           ³   ³       koi8-r.enc
+³           ³   ³       koi8-u.enc
+³           ³   ³       ksc5601.enc
+³           ³   ³       macCentEuro.enc
+³           ³   ³       macCroatian.enc
+³           ³   ³       macCyrillic.enc
+³           ³   ³       macDingbats.enc
+³           ³   ³       macGreek.enc
+³           ³   ³       macIceland.enc
+³           ³   ³       macJapan.enc
+³           ³   ³       macRoman.enc
+³           ³   ³       macRomania.enc
+³           ³   ³       macThai.enc
+³           ³   ³       macTurkish.enc
+³           ³   ³       macUkraine.enc
+³           ³   ³       shiftjis.enc
+³           ³   ³       symbol.enc
+³           ³   ³       tis-620.enc
+³           ³   ³       
+³           ³   ÃÄÄÄhttp1.0
+³           ³   ³       http.tcl
+³           ³   ³       pkgIndex.tcl
+³           ³   ³       
+³           ³   ÃÄÄÄmsgs
+³           ³   ³       af.msg
+³           ³   ³       af_za.msg
+³           ³   ³       ar.msg
+³           ³   ³       ar_in.msg
+³           ³   ³       ar_jo.msg
+³           ³   ³       ar_lb.msg
+³           ³   ³       ar_sy.msg
+³           ³   ³       be.msg
+³           ³   ³       bg.msg
+³           ³   ³       bn.msg
+³           ³   ³       bn_in.msg
+³           ³   ³       ca.msg
+³           ³   ³       cs.msg
+³           ³   ³       da.msg
+³           ³   ³       de.msg
+³           ³   ³       de_at.msg
+³           ³   ³       de_be.msg
+³           ³   ³       el.msg
+³           ³   ³       en_au.msg
+³           ³   ³       en_be.msg
+³           ³   ³       en_bw.msg
+³           ³   ³       en_ca.msg
+³           ³   ³       en_gb.msg
+³           ³   ³       en_hk.msg
+³           ³   ³       en_ie.msg
+³           ³   ³       en_in.msg
+³           ³   ³       en_nz.msg
+³           ³   ³       en_ph.msg
+³           ³   ³       en_sg.msg
+³           ³   ³       en_za.msg
+³           ³   ³       en_zw.msg
+³           ³   ³       eo.msg
+³           ³   ³       es.msg
+³           ³   ³       es_ar.msg
+³           ³   ³       es_bo.msg
+³           ³   ³       es_cl.msg
+³           ³   ³       es_co.msg
+³           ³   ³       es_cr.msg
+³           ³   ³       es_do.msg
+³           ³   ³       es_ec.msg
+³           ³   ³       es_gt.msg
+³           ³   ³       es_hn.msg
+³           ³   ³       es_mx.msg
+³           ³   ³       es_ni.msg
+³           ³   ³       es_pa.msg
+³           ³   ³       es_pe.msg
+³           ³   ³       es_pr.msg
+³           ³   ³       es_py.msg
+³           ³   ³       es_sv.msg
+³           ³   ³       es_uy.msg
+³           ³   ³       es_ve.msg
+³           ³   ³       et.msg
+³           ³   ³       eu.msg
+³           ³   ³       eu_es.msg
+³           ³   ³       fa.msg
+³           ³   ³       fa_in.msg
+³           ³   ³       fa_ir.msg
+³           ³   ³       fi.msg
+³           ³   ³       fo.msg
+³           ³   ³       fo_fo.msg
+³           ³   ³       fr.msg
+³           ³   ³       fr_be.msg
+³           ³   ³       fr_ca.msg
+³           ³   ³       fr_ch.msg
+³           ³   ³       ga.msg
+³           ³   ³       ga_ie.msg
+³           ³   ³       gl.msg
+³           ³   ³       gl_es.msg
+³           ³   ³       gv.msg
+³           ³   ³       gv_gb.msg
+³           ³   ³       he.msg
+³           ³   ³       hi.msg
+³           ³   ³       hi_in.msg
+³           ³   ³       hr.msg
+³           ³   ³       hu.msg
+³           ³   ³       id.msg
+³           ³   ³       id_id.msg
+³           ³   ³       is.msg
+³           ³   ³       it.msg
+³           ³   ³       it_ch.msg
+³           ³   ³       ja.msg
+³           ³   ³       kl.msg
+³           ³   ³       kl_gl.msg
+³           ³   ³       ko.msg
+³           ³   ³       kok.msg
+³           ³   ³       kok_in.msg
+³           ³   ³       ko_kr.msg
+³           ³   ³       kw.msg
+³           ³   ³       kw_gb.msg
+³           ³   ³       lt.msg
+³           ³   ³       lv.msg
+³           ³   ³       mk.msg
+³           ³   ³       mr.msg
+³           ³   ³       mr_in.msg
+³           ³   ³       ms.msg
+³           ³   ³       ms_my.msg
+³           ³   ³       mt.msg
+³           ³   ³       nb.msg
+³           ³   ³       nl.msg
+³           ³   ³       nl_be.msg
+³           ³   ³       nn.msg
+³           ³   ³       pl.msg
+³           ³   ³       pt.msg
+³           ³   ³       pt_br.msg
+³           ³   ³       ro.msg
+³           ³   ³       ru.msg
+³           ³   ³       ru_ua.msg
+³           ³   ³       sh.msg
+³           ³   ³       sk.msg
+³           ³   ³       sl.msg
+³           ³   ³       sq.msg
+³           ³   ³       sr.msg
+³           ³   ³       sv.msg
+³           ³   ³       sw.msg
+³           ³   ³       ta.msg
+³           ³   ³       ta_in.msg
+³           ³   ³       te.msg
+³           ³   ³       te_in.msg
+³           ³   ³       th.msg
+³           ³   ³       tr.msg
+³           ³   ³       uk.msg
+³           ³   ³       vi.msg
+³           ³   ³       zh.msg
+³           ³   ³       zh_cn.msg
+³           ³   ³       zh_hk.msg
+³           ³   ³       zh_sg.msg
+³           ³   ³       zh_tw.msg
+³           ³   ³       
+³           ³   ÃÄÄÄopt0.4
+³           ³   ³       optparse.tcl
+³           ³   ³       pkgIndex.tcl
+³           ³   ³       
+³           ³   ÀÄÄÄtzdata
+³           ³       ³   CET
+³           ³       ³   CST6CDT
+³           ³       ³   Cuba
+³           ³       ³   EET
+³           ³       ³   Egypt
+³           ³       ³   Eire
+³           ³       ³   EST
+³           ³       ³   EST5EDT
+³           ³       ³   GB
+³           ³       ³   GB-Eire
+³           ³       ³   GMT
+³           ³       ³   GMT+0
+³           ³       ³   GMT-0
+³           ³       ³   GMT0
+³           ³       ³   Greenwich
+³           ³       ³   Hongkong
+³           ³       ³   HST
+³           ³       ³   Iceland
+³           ³       ³   Iran
+³           ³       ³   Israel
+³           ³       ³   Jamaica
+³           ³       ³   Japan
+³           ³       ³   Kwajalein
+³           ³       ³   Libya
+³           ³       ³   MET
+³           ³       ³   MST
+³           ³       ³   MST7MDT
+³           ³       ³   Navajo
+³           ³       ³   NZ
+³           ³       ³   NZ-CHAT
+³           ³       ³   Poland
+³           ³       ³   Portugal
+³           ³       ³   PRC
+³           ³       ³   PST8PDT
+³           ³       ³   ROC
+³           ³       ³   ROK
+³           ³       ³   Singapore
+³           ³       ³   Turkey
+³           ³       ³   UCT
+³           ³       ³   Universal
+³           ³       ³   UTC
+³           ³       ³   W-SU
+³           ³       ³   WET
+³           ³       ³   Zulu
+³           ³       ³   
+³           ³       ÃÄÄÄAfrica
+³           ³       ³       Abidjan
+³           ³       ³       Accra
+³           ³       ³       Addis_Ababa
+³           ³       ³       Algiers
+³           ³       ³       Asmara
+³           ³       ³       Asmera
+³           ³       ³       Bamako
+³           ³       ³       Bangui
+³           ³       ³       Banjul
+³           ³       ³       Bissau
+³           ³       ³       Blantyre
+³           ³       ³       Brazzaville
+³           ³       ³       Bujumbura
+³           ³       ³       Cairo
+³           ³       ³       Casablanca
+³           ³       ³       Ceuta
+³           ³       ³       Conakry
+³           ³       ³       Dakar
+³           ³       ³       Dar_es_Salaam
+³           ³       ³       Djibouti
+³           ³       ³       Douala
+³           ³       ³       El_Aaiun
+³           ³       ³       Freetown
+³           ³       ³       Gaborone
+³           ³       ³       Harare
+³           ³       ³       Johannesburg
+³           ³       ³       Juba
+³           ³       ³       Kampala
+³           ³       ³       Khartoum
+³           ³       ³       Kigali
+³           ³       ³       Kinshasa
+³           ³       ³       Lagos
+³           ³       ³       Libreville
+³           ³       ³       Lome
+³           ³       ³       Luanda
+³           ³       ³       Lubumbashi
+³           ³       ³       Lusaka
+³           ³       ³       Malabo
+³           ³       ³       Maputo
+³           ³       ³       Maseru
+³           ³       ³       Mbabane
+³           ³       ³       Mogadishu
+³           ³       ³       Monrovia
+³           ³       ³       Nairobi
+³           ³       ³       Ndjamena
+³           ³       ³       Niamey
+³           ³       ³       Nouakchott
+³           ³       ³       Ouagadougou
+³           ³       ³       Porto-Novo
+³           ³       ³       Sao_Tome
+³           ³       ³       Timbuktu
+³           ³       ³       Tripoli
+³           ³       ³       Tunis
+³           ³       ³       Windhoek
+³           ³       ³       
+³           ³       ÃÄÄÄAmerica
+³           ³       ³   ³   Adak
+³           ³       ³   ³   Anchorage
+³           ³       ³   ³   Anguilla
+³           ³       ³   ³   Antigua
+³           ³       ³   ³   Araguaina
+³           ³       ³   ³   Aruba
+³           ³       ³   ³   Asuncion
+³           ³       ³   ³   Atikokan
+³           ³       ³   ³   Atka
+³           ³       ³   ³   Bahia
+³           ³       ³   ³   Bahia_Banderas
+³           ³       ³   ³   Barbados
+³           ³       ³   ³   Belem
+³           ³       ³   ³   Belize
+³           ³       ³   ³   Blanc-Sablon
+³           ³       ³   ³   Boa_Vista
+³           ³       ³   ³   Bogota
+³           ³       ³   ³   Boise
+³           ³       ³   ³   Buenos_Aires
+³           ³       ³   ³   Cambridge_Bay
+³           ³       ³   ³   Campo_Grande
+³           ³       ³   ³   Cancun
+³           ³       ³   ³   Caracas
+³           ³       ³   ³   Catamarca
+³           ³       ³   ³   Cayenne
+³           ³       ³   ³   Cayman
+³           ³       ³   ³   Chicago
+³           ³       ³   ³   Chihuahua
+³           ³       ³   ³   Coral_Harbour
+³           ³       ³   ³   Cordoba
+³           ³       ³   ³   Costa_Rica
+³           ³       ³   ³   Creston
+³           ³       ³   ³   Cuiaba
+³           ³       ³   ³   Curacao
+³           ³       ³   ³   Danmarkshavn
+³           ³       ³   ³   Dawson
+³           ³       ³   ³   Dawson_Creek
+³           ³       ³   ³   Denver
+³           ³       ³   ³   Detroit
+³           ³       ³   ³   Dominica
+³           ³       ³   ³   Edmonton
+³           ³       ³   ³   Eirunepe
+³           ³       ³   ³   El_Salvador
+³           ³       ³   ³   Ensenada
+³           ³       ³   ³   Fortaleza
+³           ³       ³   ³   Fort_Nelson
+³           ³       ³   ³   Fort_Wayne
+³           ³       ³   ³   Glace_Bay
+³           ³       ³   ³   Godthab
+³           ³       ³   ³   Goose_Bay
+³           ³       ³   ³   Grand_Turk
+³           ³       ³   ³   Grenada
+³           ³       ³   ³   Guadeloupe
+³           ³       ³   ³   Guatemala
+³           ³       ³   ³   Guayaquil
+³           ³       ³   ³   Guyana
+³           ³       ³   ³   Halifax
+³           ³       ³   ³   Havana
+³           ³       ³   ³   Hermosillo
+³           ³       ³   ³   Indianapolis
+³           ³       ³   ³   Inuvik
+³           ³       ³   ³   Iqaluit
+³           ³       ³   ³   Jamaica
+³           ³       ³   ³   Jujuy
+³           ³       ³   ³   Juneau
+³           ³       ³   ³   Knox_IN
+³           ³       ³   ³   Kralendijk
+³           ³       ³   ³   La_Paz
+³           ³       ³   ³   Lima
+³           ³       ³   ³   Los_Angeles
+³           ³       ³   ³   Louisville
+³           ³       ³   ³   Lower_Princes
+³           ³       ³   ³   Maceio
+³           ³       ³   ³   Managua
+³           ³       ³   ³   Manaus
+³           ³       ³   ³   Marigot
+³           ³       ³   ³   Martinique
+³           ³       ³   ³   Matamoros
+³           ³       ³   ³   Mazatlan
+³           ³       ³   ³   Mendoza
+³           ³       ³   ³   Menominee
+³           ³       ³   ³   Merida
+³           ³       ³   ³   Metlakatla
+³           ³       ³   ³   Mexico_City
+³           ³       ³   ³   Miquelon
+³           ³       ³   ³   Moncton
+³           ³       ³   ³   Monterrey
+³           ³       ³   ³   Montevideo
+³           ³       ³   ³   Montreal
+³           ³       ³   ³   Montserrat
+³           ³       ³   ³   Nassau
+³           ³       ³   ³   New_York
+³           ³       ³   ³   Nipigon
+³           ³       ³   ³   Nome
+³           ³       ³   ³   Noronha
+³           ³       ³   ³   Nuuk
+³           ³       ³   ³   Ojinaga
+³           ³       ³   ³   Panama
+³           ³       ³   ³   Pangnirtung
+³           ³       ³   ³   Paramaribo
+³           ³       ³   ³   Phoenix
+³           ³       ³   ³   Port-au-Prince
+³           ³       ³   ³   Porto_Acre
+³           ³       ³   ³   Porto_Velho
+³           ³       ³   ³   Port_of_Spain
+³           ³       ³   ³   Puerto_Rico
+³           ³       ³   ³   Punta_Arenas
+³           ³       ³   ³   Rainy_River
+³           ³       ³   ³   Rankin_Inlet
+³           ³       ³   ³   Recife
+³           ³       ³   ³   Regina
+³           ³       ³   ³   Resolute
+³           ³       ³   ³   Rio_Branco
+³           ³       ³   ³   Rosario
+³           ³       ³   ³   Santarem
+³           ³       ³   ³   Santa_Isabel
+³           ³       ³   ³   Santiago
+³           ³       ³   ³   Santo_Domingo
+³           ³       ³   ³   Sao_Paulo
+³           ³       ³   ³   Scoresbysund
+³           ³       ³   ³   Shiprock
+³           ³       ³   ³   Sitka
+³           ³       ³   ³   St_Barthelemy
+³           ³       ³   ³   St_Johns
+³           ³       ³   ³   St_Kitts
+³           ³       ³   ³   St_Lucia
+³           ³       ³   ³   St_Thomas
+³           ³       ³   ³   St_Vincent
+³           ³       ³   ³   Swift_Current
+³           ³       ³   ³   Tegucigalpa
+³           ³       ³   ³   Thule
+³           ³       ³   ³   Thunder_Bay
+³           ³       ³   ³   Tijuana
+³           ³       ³   ³   Toronto
+³           ³       ³   ³   Tortola
+³           ³       ³   ³   Vancouver
+³           ³       ³   ³   Virgin
+³           ³       ³   ³   Whitehorse
+³           ³       ³   ³   Winnipeg
+³           ³       ³   ³   Yakutat
+³           ³       ³   ³   Yellowknife
+³           ³       ³   ³   
+³           ³       ³   ÃÄÄÄArgentina
+³           ³       ³   ³       Buenos_Aires
+³           ³       ³   ³       Catamarca
+³           ³       ³   ³       ComodRivadavia
+³           ³       ³   ³       Cordoba
+³           ³       ³   ³       Jujuy
+³           ³       ³   ³       La_Rioja
+³           ³       ³   ³       Mendoza
+³           ³       ³   ³       Rio_Gallegos
+³           ³       ³   ³       Salta
+³           ³       ³   ³       San_Juan
+³           ³       ³   ³       San_Luis
+³           ³       ³   ³       Tucuman
+³           ³       ³   ³       Ushuaia
+³           ³       ³   ³       
+³           ³       ³   ÃÄÄÄIndiana
+³           ³       ³   ³       Indianapolis
+³           ³       ³   ³       Knox
+³           ³       ³   ³       Marengo
+³           ³       ³   ³       Petersburg
+³           ³       ³   ³       Tell_City
+³           ³       ³   ³       Vevay
+³           ³       ³   ³       Vincennes
+³           ³       ³   ³       Winamac
+³           ³       ³   ³       
+³           ³       ³   ÃÄÄÄKentucky
+³           ³       ³   ³       Louisville
+³           ³       ³   ³       Monticello
+³           ³       ³   ³       
+³           ³       ³   ÀÄÄÄNorth_Dakota
+³           ³       ³           Beulah
+³           ³       ³           Center
+³           ³       ³           New_Salem
+³           ³       ³           
+³           ³       ÃÄÄÄAntarctica
+³           ³       ³       Casey
+³           ³       ³       Davis
+³           ³       ³       DumontDUrville
+³           ³       ³       Macquarie
+³           ³       ³       Mawson
+³           ³       ³       McMurdo
+³           ³       ³       Palmer
+³           ³       ³       Rothera
+³           ³       ³       South_Pole
+³           ³       ³       Syowa
+³           ³       ³       Troll
+³           ³       ³       Vostok
+³           ³       ³       
+³           ³       ÃÄÄÄArctic
+³           ³       ³       Longyearbyen
+³           ³       ³       
+³           ³       ÃÄÄÄAsia
+³           ³       ³       Aden
+³           ³       ³       Almaty
+³           ³       ³       Amman
+³           ³       ³       Anadyr
+³           ³       ³       Aqtau
+³           ³       ³       Aqtobe
+³           ³       ³       Ashgabat
+³           ³       ³       Ashkhabad
+³           ³       ³       Atyrau
+³           ³       ³       Baghdad
+³           ³       ³       Bahrain
+³           ³       ³       Baku
+³           ³       ³       Bangkok
+³           ³       ³       Barnaul
+³           ³       ³       Beirut
+³           ³       ³       Bishkek
+³           ³       ³       Brunei
+³           ³       ³       Calcutta
+³           ³       ³       Chita
+³           ³       ³       Choibalsan
+³           ³       ³       Chongqing
+³           ³       ³       Chungking
+³           ³       ³       Colombo
+³           ³       ³       Dacca
+³           ³       ³       Damascus
+³           ³       ³       Dhaka
+³           ³       ³       Dili
+³           ³       ³       Dubai
+³           ³       ³       Dushanbe
+³           ³       ³       Famagusta
+³           ³       ³       Gaza
+³           ³       ³       Harbin
+³           ³       ³       Hebron
+³           ³       ³       Hong_Kong
+³           ³       ³       Hovd
+³           ³       ³       Ho_Chi_Minh
+³           ³       ³       Irkutsk
+³           ³       ³       Istanbul
+³           ³       ³       Jakarta
+³           ³       ³       Jayapura
+³           ³       ³       Jerusalem
+³           ³       ³       Kabul
+³           ³       ³       Kamchatka
+³           ³       ³       Karachi
+³           ³       ³       Kashgar
+³           ³       ³       Kathmandu
+³           ³       ³       Katmandu
+³           ³       ³       Khandyga
+³           ³       ³       Kolkata
+³           ³       ³       Krasnoyarsk
+³           ³       ³       Kuala_Lumpur
+³           ³       ³       Kuching
+³           ³       ³       Kuwait
+³           ³       ³       Macao
+³           ³       ³       Macau
+³           ³       ³       Magadan
+³           ³       ³       Makassar
+³           ³       ³       Manila
+³           ³       ³       Muscat
+³           ³       ³       Nicosia
+³           ³       ³       Novokuznetsk
+³           ³       ³       Novosibirsk
+³           ³       ³       Omsk
+³           ³       ³       Oral
+³           ³       ³       Phnom_Penh
+³           ³       ³       Pontianak
+³           ³       ³       Pyongyang
+³           ³       ³       Qatar
+³           ³       ³       Qostanay
+³           ³       ³       Qyzylorda
+³           ³       ³       Rangoon
+³           ³       ³       Riyadh
+³           ³       ³       Saigon
+³           ³       ³       Sakhalin
+³           ³       ³       Samarkand
+³           ³       ³       Seoul
+³           ³       ³       Shanghai
+³           ³       ³       Singapore
+³           ³       ³       Srednekolymsk
+³           ³       ³       Taipei
+³           ³       ³       Tashkent
+³           ³       ³       Tbilisi
+³           ³       ³       Tehran
+³           ³       ³       Tel_Aviv
+³           ³       ³       Thimbu
+³           ³       ³       Thimphu
+³           ³       ³       Tokyo
+³           ³       ³       Tomsk
+³           ³       ³       Ujung_Pandang
+³           ³       ³       Ulaanbaatar
+³           ³       ³       Ulan_Bator
+³           ³       ³       Urumqi
+³           ³       ³       Ust-Nera
+³           ³       ³       Vientiane
+³           ³       ³       Vladivostok
+³           ³       ³       Yakutsk
+³           ³       ³       Yangon
+³           ³       ³       Yekaterinburg
+³           ³       ³       Yerevan
+³           ³       ³       
+³           ³       ÃÄÄÄAtlantic
+³           ³       ³       Azores
+³           ³       ³       Bermuda
+³           ³       ³       Canary
+³           ³       ³       Cape_Verde
+³           ³       ³       Faeroe
+³           ³       ³       Faroe
+³           ³       ³       Jan_Mayen
+³           ³       ³       Madeira
+³           ³       ³       Reykjavik
+³           ³       ³       South_Georgia
+³           ³       ³       Stanley
+³           ³       ³       St_Helena
+³           ³       ³       
+³           ³       ÃÄÄÄAustralia
+³           ³       ³       ACT
+³           ³       ³       Adelaide
+³           ³       ³       Brisbane
+³           ³       ³       Broken_Hill
+³           ³       ³       Canberra
+³           ³       ³       Currie
+³           ³       ³       Darwin
+³           ³       ³       Eucla
+³           ³       ³       Hobart
+³           ³       ³       LHI
+³           ³       ³       Lindeman
+³           ³       ³       Lord_Howe
+³           ³       ³       Melbourne
+³           ³       ³       North
+³           ³       ³       NSW
+³           ³       ³       Perth
+³           ³       ³       Queensland
+³           ³       ³       South
+³           ³       ³       Sydney
+³           ³       ³       Tasmania
+³           ³       ³       Victoria
+³           ³       ³       West
+³           ³       ³       Yancowinna
+³           ³       ³       
+³           ³       ÃÄÄÄBrazil
+³           ³       ³       Acre
+³           ³       ³       DeNoronha
+³           ³       ³       East
+³           ³       ³       West
+³           ³       ³       
+³           ³       ÃÄÄÄCanada
+³           ³       ³       Atlantic
+³           ³       ³       Central
+³           ³       ³       East-Saskatchewan
+³           ³       ³       Eastern
+³           ³       ³       Mountain
+³           ³       ³       Newfoundland
+³           ³       ³       Pacific
+³           ³       ³       Saskatchewan
+³           ³       ³       Yukon
+³           ³       ³       
+³           ³       ÃÄÄÄChile
+³           ³       ³       Continental
+³           ³       ³       EasterIsland
+³           ³       ³       
+³           ³       ÃÄÄÄEtc
+³           ³       ³       GMT
+³           ³       ³       GMT+0
+³           ³       ³       GMT+1
+³           ³       ³       GMT+10
+³           ³       ³       GMT+11
+³           ³       ³       GMT+12
+³           ³       ³       GMT+2
+³           ³       ³       GMT+3
+³           ³       ³       GMT+4
+³           ³       ³       GMT+5
+³           ³       ³       GMT+6
+³           ³       ³       GMT+7
+³           ³       ³       GMT+8
+³           ³       ³       GMT+9
+³           ³       ³       GMT-0
+³           ³       ³       GMT-1
+³           ³       ³       GMT-10
+³           ³       ³       GMT-11
+³           ³       ³       GMT-12
+³           ³       ³       GMT-13
+³           ³       ³       GMT-14
+³           ³       ³       GMT-2
+³           ³       ³       GMT-3
+³           ³       ³       GMT-4
+³           ³       ³       GMT-5
+³           ³       ³       GMT-6
+³           ³       ³       GMT-7
+³           ³       ³       GMT-8
+³           ³       ³       GMT-9
+³           ³       ³       GMT0
+³           ³       ³       Greenwich
+³           ³       ³       UCT
+³           ³       ³       Universal
+³           ³       ³       UTC
+³           ³       ³       Zulu
+³           ³       ³       
+³           ³       ÃÄÄÄEurope
+³           ³       ³       Amsterdam
+³           ³       ³       Andorra
+³           ³       ³       Astrakhan
+³           ³       ³       Athens
+³           ³       ³       Belfast
+³           ³       ³       Belgrade
+³           ³       ³       Berlin
+³           ³       ³       Bratislava
+³           ³       ³       Brussels
+³           ³       ³       Bucharest
+³           ³       ³       Budapest
+³           ³       ³       Busingen
+³           ³       ³       Chisinau
+³           ³       ³       Copenhagen
+³           ³       ³       Dublin
+³           ³       ³       Gibraltar
+³           ³       ³       Guernsey
+³           ³       ³       Helsinki
+³           ³       ³       Isle_of_Man
+³           ³       ³       Istanbul
+³           ³       ³       Jersey
+³           ³       ³       Kaliningrad
+³           ³       ³       Kiev
+³           ³       ³       Kirov
+³           ³       ³       Lisbon
+³           ³       ³       Ljubljana
+³           ³       ³       London
+³           ³       ³       Luxembourg
+³           ³       ³       Madrid
+³           ³       ³       Malta
+³           ³       ³       Mariehamn
+³           ³       ³       Minsk
+³           ³       ³       Monaco
+³           ³       ³       Moscow
+³           ³       ³       Nicosia
+³           ³       ³       Oslo
+³           ³       ³       Paris
+³           ³       ³       Podgorica
+³           ³       ³       Prague
+³           ³       ³       Riga
+³           ³       ³       Rome
+³           ³       ³       Samara
+³           ³       ³       San_Marino
+³           ³       ³       Sarajevo
+³           ³       ³       Saratov
+³           ³       ³       Simferopol
+³           ³       ³       Skopje
+³           ³       ³       Sofia
+³           ³       ³       Stockholm
+³           ³       ³       Tallinn
+³           ³       ³       Tirane
+³           ³       ³       Tiraspol
+³           ³       ³       Ulyanovsk
+³           ³       ³       Uzhgorod
+³           ³       ³       Vaduz
+³           ³       ³       Vatican
+³           ³       ³       Vienna
+³           ³       ³       Vilnius
+³           ³       ³       Volgograd
+³           ³       ³       Warsaw
+³           ³       ³       Zagreb
+³           ³       ³       Zaporozhye
+³           ³       ³       Zurich
+³           ³       ³       
+³           ³       ÃÄÄÄIndian
+³           ³       ³       Antananarivo
+³           ³       ³       Chagos
+³           ³       ³       Christmas
+³           ³       ³       Cocos
+³           ³       ³       Comoro
+³           ³       ³       Kerguelen
+³           ³       ³       Mahe
+³           ³       ³       Maldives
+³           ³       ³       Mauritius
+³           ³       ³       Mayotte
+³           ³       ³       Reunion
+³           ³       ³       
+³           ³       ÃÄÄÄMexico
+³           ³       ³       BajaNorte
+³           ³       ³       BajaSur
+³           ³       ³       General
+³           ³       ³       
+³           ³       ÃÄÄÄPacific
+³           ³       ³       Apia
+³           ³       ³       Auckland
+³           ³       ³       Bougainville
+³           ³       ³       Chatham
+³           ³       ³       Chuuk
+³           ³       ³       Easter
+³           ³       ³       Efate
+³           ³       ³       Enderbury
+³           ³       ³       Fakaofo
+³           ³       ³       Fiji
+³           ³       ³       Funafuti
+³           ³       ³       Galapagos
+³           ³       ³       Gambier
+³           ³       ³       Guadalcanal
+³           ³       ³       Guam
+³           ³       ³       Honolulu
+³           ³       ³       Johnston
+³           ³       ³       Kanton
+³           ³       ³       Kiritimati
+³           ³       ³       Kosrae
+³           ³       ³       Kwajalein
+³           ³       ³       Majuro
+³           ³       ³       Marquesas
+³           ³       ³       Midway
+³           ³       ³       Nauru
+³           ³       ³       Niue
+³           ³       ³       Norfolk
+³           ³       ³       Noumea
+³           ³       ³       Pago_Pago
+³           ³       ³       Palau
+³           ³       ³       Pitcairn
+³           ³       ³       Pohnpei
+³           ³       ³       Ponape
+³           ³       ³       Port_Moresby
+³           ³       ³       Rarotonga
+³           ³       ³       Saipan
+³           ³       ³       Samoa
+³           ³       ³       Tahiti
+³           ³       ³       Tarawa
+³           ³       ³       Tongatapu
+³           ³       ³       Truk
+³           ³       ³       Wake
+³           ³       ³       Wallis
+³           ³       ³       Yap
+³           ³       ³       
+³           ³       ÃÄÄÄSystemV
+³           ³       ³       AST4
+³           ³       ³       AST4ADT
+³           ³       ³       CST6
+³           ³       ³       CST6CDT
+³           ³       ³       EST5
+³           ³       ³       EST5EDT
+³           ³       ³       HST10
+³           ³       ³       MST7
+³           ³       ³       MST7MDT
+³           ³       ³       PST8
+³           ³       ³       PST8PDT
+³           ³       ³       YST9
+³           ³       ³       YST9YDT
+³           ³       ³       
+³           ³       ÀÄÄÄUS
+³           ³               Alaska
+³           ³               Aleutian
+³           ³               Arizona
+³           ³               Central
+³           ³               East-Indiana
+³           ³               Eastern
+³           ³               Hawaii
+³           ³               Indiana-Starke
+³           ³               Michigan
+³           ³               Mountain
+³           ³               Pacific
+³           ³               Pacific-New
+³           ³               Samoa
+³           ³               
+³           ÃÄÄÄtcl8
+³           ³   ÃÄÄÄ8.4
+³           ³   ³   ³   platform-1.0.18.tm
+³           ³   ³   ³   
+³           ³   ³   ÀÄÄÄplatform
+³           ³   ³           shell-1.1.4.tm
+³           ³   ³           
+³           ³   ÃÄÄÄ8.5
+³           ³   ³       msgcat-1.6.1.tm
+³           ³   ³       tcltest-2.5.3.tm
+³           ³   ³       
+³           ³   ÀÄÄÄ8.6
+³           ³       ³   http-2.9.5.tm
+³           ³       ³   
+³           ³       ÀÄÄÄtdbc
+³           ³               sqlite3-1.1.3.tm
+³           ³               
+³           ÃÄÄÄtk
+³           ³   ³   bgerror.tcl
+³           ³   ³   button.tcl
+³           ³   ³   choosedir.tcl
+³           ³   ³   clrpick.tcl
+³           ³   ³   comdlg.tcl
+³           ³   ³   console.tcl
+³           ³   ³   dialog.tcl
+³           ³   ³   entry.tcl
+³           ³   ³   focus.tcl
+³           ³   ³   fontchooser.tcl
+³           ³   ³   iconlist.tcl
+³           ³   ³   icons.tcl
+³           ³   ³   license.terms
+³           ³   ³   listbox.tcl
+³           ³   ³   megawidget.tcl
+³           ³   ³   menu.tcl
+³           ³   ³   mkpsenc.tcl
+³           ³   ³   msgbox.tcl
+³           ³   ³   obsolete.tcl
+³           ³   ³   optMenu.tcl
+³           ³   ³   palette.tcl
+³           ³   ³   panedwindow.tcl
+³           ³   ³   pkgIndex.tcl
+³           ³   ³   safetk.tcl
+³           ³   ³   scale.tcl
+³           ³   ³   scrlbar.tcl
+³           ³   ³   spinbox.tcl
+³           ³   ³   tclIndex
+³           ³   ³   tearoff.tcl
+³           ³   ³   text.tcl
+³           ³   ³   tk.tcl
+³           ³   ³   tkfbox.tcl
+³           ³   ³   unsupported.tcl
+³           ³   ³   xmfbox.tcl
+³           ³   ³   
+³           ³   ÃÄÄÄimages
+³           ³   ³       logo.eps
+³           ³   ³       logo100.gif
+³           ³   ³       logo64.gif
+³           ³   ³       logoLarge.gif
+³           ³   ³       logoMed.gif
+³           ³   ³       pwrdLogo.eps
+³           ³   ³       pwrdLogo100.gif
+³           ³   ³       pwrdLogo150.gif
+³           ³   ³       pwrdLogo175.gif
+³           ³   ³       pwrdLogo200.gif
+³           ³   ³       pwrdLogo75.gif
+³           ³   ³       README
+³           ³   ³       tai-ku.gif
+³           ³   ³       
+³           ³   ÃÄÄÄmsgs
+³           ³   ³       cs.msg
+³           ³   ³       da.msg
+³           ³   ³       de.msg
+³           ³   ³       el.msg
+³           ³   ³       en.msg
+³           ³   ³       en_gb.msg
+³           ³   ³       eo.msg
+³           ³   ³       es.msg
+³           ³   ³       fr.msg
+³           ³   ³       hu.msg
+³           ³   ³       it.msg
+³           ³   ³       nl.msg
+³           ³   ³       pl.msg
+³           ³   ³       pt.msg
+³           ³   ³       ru.msg
+³           ³   ³       sv.msg
+³           ³   ³       
+³           ³   ÀÄÄÄttk
+³           ³           altTheme.tcl
+³           ³           aquaTheme.tcl
+³           ³           button.tcl
+³           ³           clamTheme.tcl
+³           ³           classicTheme.tcl
+³           ³           combobox.tcl
+³           ³           cursors.tcl
+³           ³           defaults.tcl
+³           ³           entry.tcl
+³           ³           fonts.tcl
+³           ³           menubutton.tcl
+³           ³           notebook.tcl
+³           ³           panedwindow.tcl
+³           ³           progress.tcl
+³           ³           scale.tcl
+³           ³           scrollbar.tcl
+³           ³           sizegrip.tcl
+³           ³           spinbox.tcl
+³           ³           treeview.tcl
+³           ³           ttk.tcl
+³           ³           utils.tcl
+³           ³           vistaTheme.tcl
+³           ³           winTheme.tcl
+³           ³           xpTheme.tcl
+³           ³           
+³           ÃÄÄÄwheel-0.38.4-py3.11.egg-info
+³           ³       dependency_links.txt
+³           ³       entry_points.txt
+³           ³       not-zip-safe
+³           ³       PKG-INFO
+³           ³       requires.txt
+³           ³       SOURCES.txt
+³           ³       top_level.txt
+³           ³       
+³           ÀÄÄÄwin32
+³                   win32api.pyd
+³                   
+ÃÄÄÄposture_fit_algorithm
+³   ³   Detector.py
+³   ³   Gem.py
+³   ³   Pushup.py
+³   ³   Situp.py
+³   ³   Squats.py
+³   ³   __init__.py
+³   ³   
+³   ÀÄÄÄ__pycache__
+³           Detector.cpython-311.pyc
+³           Detector2.cpython-311.pyc
+³           Pushup.cpython-311.pyc
+³           Situp.cpython-311.pyc
+³           __init__.cpython-311.pyc
+³           
+ÃÄÄÄposture_fit_development
+³   ³   Angle.py
+³   ³   Counter.py
+³   ³   Sound.py
+³   ³   Webcam.py
+³   ³   __init__.py
+³   ³   
+³   ÀÄÄÄ__pycache__
+³           Sound.cpython-311.pyc
+³           __init__.cpython-311.pyc
+³           
+ÀÄÄÄtest
+    ³   test_sound.py
+    ³   __init__.py
+    ³   
+    ÀÄÄÄpoc
+            test_class_a.py
+            test_class_e.py
+            test_class_gs.py
+            test_class_i.py
+            test_class_p.py
+            

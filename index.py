@@ -1,3 +1,4 @@
+from icecream import ic
 import pygame
 import cv2
 import numpy as np
@@ -31,7 +32,7 @@ last_time = pygame.time.get_ticks()
 
 # Define Button class
 class Button:
-    def __init__(self, text, x, y, width, height, action):
+    def __init__(self, text, x, y, width, height, action) -> None:
         self.rect = pygame.Rect(x, y, width, height)
         self.color = (200, 200, 200)
         self.text = text
@@ -62,12 +63,12 @@ get_ready_button = Button("Get Ready", screen_width // 2 - button_width // 2, sc
 
 countdown_label = Button("", screen_width // 2 - 50, screen_height // 2 + button_height, 100, 100, action=None)
 
-def run_exercise_logic(exercise_logic):
+def run_exercise_logic(exercise_logic) -> None:
     global state, current_logic
     current_logic = exercise_logic
     state = "get_ready"
     
-def change_to_exercise_selection():
+def change_to_exercise_selection() -> None:
     global state
     state = "exercise_selection"
     
