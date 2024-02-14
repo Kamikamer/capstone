@@ -1,10 +1,8 @@
-import datetime
 import os
 import time
 from typing import Self
 from playsound import playsound
 from icecream import ic
-from datetime import datetime
 
 class SoundPlayer:
     def __new__(cls) -> Self:
