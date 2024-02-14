@@ -1,4 +1,22 @@
-from icecream import ic
+## Imports
+### Play a melodic tune
+from posture_fit_development.Startup import startup, booting, booting2
+import threading
+e = threading.Event()
+e2 = threading.Event()
+boot_greet = threading.Thread(target=booting, args=(e, e2))
+boot_greet_2 = threading.Thread(target=booting2, args=(e2, e))
+
+boot_greet.start()
+boot_greet_2.start() 
+
+### Alert the user that the app is starting
+try:
+    import pyi_splash # type: ignore
+    pyi_splash.update_text("When it finishes running the background stuff, it will start the app and show the app whilst closing this app.")
+except ImportError:
+    pass
+## Continue importing
 import pygame
 import cv2
 import numpy as np
@@ -6,13 +24,29 @@ from posture_fit_algorithm.Pushup import PushupLogic
 from posture_fit_algorithm.Situp import SitupLogic
 from posture_fit_algorithm.Squats import SquatsLogic
 
-pygame.init()
+try:
+    pyi_splash.close()
+except NameError:
+    pass
+
+## Initializers
+
+
+app_thread = threading.Thread(target=pygame.init)
+
+# Start both threads
+app_thread.start()
+greeting = threading.Thread(target=startup)
+greeting.start()
+
+## Constants
 
 BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
 
-screen_width = 1920
-screen_height = 1080
+screen_width = 760
+screen_height = 480
+
 screen = pygame.display.set_mode((screen_width, screen_height))
 pygame.display.set_caption('Exercise App')
 
@@ -20,7 +54,9 @@ clock = pygame.time.Clock()
 
 rem = 16
 width, height = int(114.625*rem), int(56*rem)
+
 # Initialize VideoCapture with cv2.CAP_DSHOW flag
+
 cap = cv2.VideoCapture(0, cv2.CAP_DSHOW)
 cap.set(cv2.CAP_PROP_FRAME_WIDTH, width)
 cap.set(cv2.CAP_PROP_FRAME_HEIGHT, height)
@@ -30,7 +66,19 @@ current_logic = None
 countdown_time = 5
 last_time = pygame.time.get_ticks()
 
-# Define Button class
+## Classes and functions
+
+def run_exercise_logic(exercise_logic) -> None:
+    global state, current_logic
+    current_logic = exercise_logic
+    state = "get_ready"
+    
+def change_to_exercise_selection() -> None:
+    global state
+    state = "exercise_selection"
+
+### Buttons
+
 class Button:
     def __init__(self, text, x, y, width, height, action) -> None:
         self.rect = pygame.Rect(x, y, width, height)
@@ -63,15 +111,8 @@ get_ready_button = Button("Get Ready", screen_width // 2 - button_width // 2, sc
 
 countdown_label = Button("", screen_width // 2 - 50, screen_height // 2 + button_height, 100, 100, action=None)
 
-def run_exercise_logic(exercise_logic) -> None:
-    global state, current_logic
-    current_logic = exercise_logic
-    state = "get_ready"
-    
-def change_to_exercise_selection() -> None:
-    global state
-    state = "exercise_selection"
-    
+
+## Running code
 running = True
 while running:
     current_time = pygame.time.get_ticks()
@@ -88,6 +129,7 @@ while running:
         if start_button.rect.collidepoint(pygame.mouse.get_pos()):
             if event.type == pygame.MOUSEBUTTONDOWN:
                 state = "exercise_selection"
+
 
     elif state == "exercise_selection":
         situps_button.draw(screen)
@@ -129,7 +171,7 @@ while running:
             frame = pygame.transform.scale(frame, (screen_width, screen_height))
             
             # Blit frame onto Pygame display
-            screen.blit(frame, (0, 0))6
+            screen.blit(frame, (0, 0))
 
             key = cv2.waitKey(1)
             if key & 0xFF == ord('q'):
