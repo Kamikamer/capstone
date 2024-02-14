@@ -1,17 +1,15 @@
 from typing import NamedTuple, NoReturn
 import cv2
-import posture_fit_algorithm.Detector as Detector
-import mediapipe
 import math
 import time
 from icecream import ic
 import traceback
 import threading
 from posture_fit_development.Sound import SoundPlayer
-from mediapipe.python.solutions import pose, drawing_utils
+import mediapipe as mp
 
 class ExerciseLogic:
-    def __init__(self, exercise_name, sound_type) -> None:
+    def __init__(self, exercise_name: str, sound_type: str) -> None:
         self.exercise_name = exercise_name
         self._setup_variables()
         self._setup_sound_player(sound_type=sound_type)
@@ -19,12 +17,12 @@ class ExerciseLogic:
         ic.configureOutput(prefix=f'{self.exercise_name} Logic (ツ)_/¯ ', includeContext=True)
 
     def _setup_sound_player(self, sound_type) -> None:
-        self.sound_type = sound_type
+        self.sound_type: str = sound_type
         self.sp = SoundPlayer()
     
     def _setup_mppose(self) -> None:
-        self.mpPose = pose
-        self.mpDraw = drawing_utils
+        self.mpPose = mp.solutions.pose
+        self.mpDraw = mp.solutions.drawing_utils
         self.pose = self.mpPose.Pose(static_image_mode=False, model_complexity=1, smooth_landmarks=True, enable_segmentation=False, smooth_segmentation=True, min_detection_confidence=0.5, min_tracking_confidence=0.5)
     
     def _setup_variables(self) -> None:
