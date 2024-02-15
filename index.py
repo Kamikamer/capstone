@@ -111,7 +111,7 @@ def run_exercise_logic(exercise_logic):
 
 def draw_close_text():
     font = pygame.font.Font(None, 36)
-    text_surface = font.render("Press a to Close", True, BLACK)
+    text_surface = font.render("Press q to exit or change excercise", True, BLACK)
     text_rect = text_surface.get_rect(center=(screen_width // 2, 50))
     screen.blit(text_surface, text_rect)
 
