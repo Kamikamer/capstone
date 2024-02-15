@@ -8,7 +8,7 @@ boot_greet = threading.Thread(target=booting, args=(e, e2))
 boot_greet_2 = threading.Thread(target=booting2, args=(e2, e))
 
 boot_greet.start()
-boot_greet_2.start() 
+# boot_greet_2.start() 
 
 ### Alert the user that the app is starting
 try:
