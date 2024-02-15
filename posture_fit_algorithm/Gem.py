@@ -6,6 +6,7 @@ from icecream import ic
 import traceback
 from posture_fit_development.Sound import SoundPlayer
 import mediapipe as mp
+import threading
 class ExerciseLogic:
     def __init__(self, exercise_name: str, sound_type: str) -> None:
         self.exercise_name = exercise_name
@@ -102,8 +103,7 @@ class ExerciseLogic:
         color = (0, 255, 0) if is_correct_form else (0, 0, 255)
         # Check if there's a change from correct to incorrect form
         if self.prev_form_correct and not is_correct_form:
-            sp = SoundPlayer()
-            sp.play_sound("IF_1")  # Play the sound
+            threading.Thread(target=self.play_sound_async).start()
             self.prev_form_correct = False  # Update the previous form state
         # Update previous form state
         self.prev_form_correct = is_correct_form
