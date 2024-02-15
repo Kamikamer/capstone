@@ -2,3 +2,4 @@ icecream
 pyinstaller
 PyUpdater
 tufup
+psutils

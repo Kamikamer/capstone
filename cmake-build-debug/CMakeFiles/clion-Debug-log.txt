@@ -1,0 +1,6 @@
+"C:\Users\Kami\AppData\Local\Programs\CLion Nova\bin\cmake\win\x64\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug "-DCMAKE_MAKE_PROGRAM=C:/Users/Kami/AppData/Local/Programs/CLion Nova/bin/ninja/win/x64/ninja.exe" -DCMAKE_TOOLCHAIN_FILE=C:\Users\Kami\.vcpkg-clion\vcpkg\scripts\buildsystems\vcpkg.cmake -G Ninja -S D:\Private\Github\capstone -B D:\Private\Github\capstone\cmake-build-debug
+CMake Error at CMakeLists.txt:7 (find_library):
+  find_library called with incorrect number of arguments
+
+
+-- Configuring incomplete, errors occurred!
