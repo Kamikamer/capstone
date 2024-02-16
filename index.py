@@ -54,6 +54,7 @@ def situps_action():
     cap.set(cv2.CAP_PROP_FRAME_HEIGHT, height)
     countdown_time = 5
     last_time = pygame.time.get_ticks()
+    pygame.display.set_caption('situp')
 def pushups_action():
     global state, current_logic, camera_opened, cap, countdown_time, last_time
     current_logic = PushupLogic("Pushup")
@@ -64,6 +65,7 @@ def pushups_action():
     cap.set(cv2.CAP_PROP_FRAME_HEIGHT, height)
     countdown_time = 5
     last_time = pygame.time.get_ticks()
+    pygame.display.set_caption('pushup')
 def squats_action():
     global state, current_logic, camera_opened, cap, countdown_time, last_time
     current_logic = SquatsLogic("Squats")
@@ -74,6 +76,7 @@ def squats_action():
     cap.set(cv2.CAP_PROP_FRAME_HEIGHT, height)
     countdown_time = 5
     last_time = pygame.time.get_ticks()
+    pygame.display.set_caption('squats')    
 def exit_action():
     global running
     running = False
