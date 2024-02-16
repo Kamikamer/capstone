@@ -74,10 +74,11 @@ class ExerciseLogic:
             if self.form == 1:
                 self.process_specific_angles(frame)
 
+            cv2.rectangle(frame,(260,440),(0,490),(255,255,255),cv2.FILLED)
             cv2.putText(frame, f'counter:{str(int(self.count))}', (10, 480), cv2.FONT_HERSHEY_PLAIN, 3, (0,0,0), 3)
             cv2.putText(frame, f'fps:{str(int(self.fps))}', (10, 70), cv2.FONT_HERSHEY_PLAIN, 3, (0, 0, 255), 3)
 
-        cv2.imshow(f'{self.exercise_name} counter', frame)
+
 
     def findPose(self, img, draw=True):
         imgRGB = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
