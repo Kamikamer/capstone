@@ -95,6 +95,16 @@ def draw_close_text():
     text_surface = font.render("Press q to exit or change excercise", True, BLACK)
     text_rect = text_surface.get_rect(center=(screen_width // 2, 50))
     screen.blit(text_surface, text_rect)
+def dratime():
+    ticks = pygame.time.get_ticks()
+    millis=ticks%1000
+    seconds=int(ticks/1000 % 60)
+    minutes=int(ticks/60000 % 24)
+    out=' {minutes:02d} : {seconds:02d} : {millis} '.format(minutes=minutes, millis=millis, seconds=seconds)    
+    fontt = pygame.font.Font(None, 100)
+    text_surf = fontt.render(f'time : {out}', True, BLACK)
+    text_rectt = text_surf.get_rect(center=(screen_width // 2, 100))
+    screen.blit(text_surf, text_rectt)
 running = True
 while running:
     current_time = pygame.time.get_ticks()
@@ -138,6 +148,7 @@ while running:
             # Blit frame onto Pygame display
             screen.blit(frame, (0, 0))
             draw_close_text()
+            dratime()
             for event in pygame.event.get():
                 if event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_q:
