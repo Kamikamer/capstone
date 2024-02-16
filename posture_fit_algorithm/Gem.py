@@ -2,21 +2,27 @@ from typing import NamedTuple, NoReturn
 import cv2
 import math
 import time
-from icecream import ic
 import traceback
+import threading
 from posture_fit_development.Sound import SoundPlayer
 import mediapipe as mp
-import threading
+try:
+    from icecream import ic
+except ImportError:  # Graceful fallback if IceCream isn't installed.
+    ic = lambda *a: None if not a else (a[0] if len(a) == 1 else a)  # noqa
 class ExerciseLogic:
     def __init__(self, exercise_name: str, sound_type: str) -> None:
         self.exercise_name = exercise_name
         self._setup_variables()
         self._setup_sound_player(sound_type=sound_type)
         self._setup_mppose()
-        ic.configureOutput(prefix=f'{self.exercise_name} Logic (ツ)_/¯ ', includeContext=True)
+        try:
+            ic.configureOutput(prefix=f'{self.exercise_name} Logic (ツ)_/¯ ', includeContext=True)
+        except AttributeError:
+            pass
     def _setup_sound_player(self, sound_type) -> None:
         self.sound_type: str = sound_type
-        self.sp = SoundPlayer()
+        self.sp = SoundPlayer()    
     def _setup_mppose(self) -> None:
         self.mpPose = mp.solutions.pose
         self.mpDraw = mp.solutions.drawing_utils
@@ -38,7 +44,7 @@ class ExerciseLogic:
             print("Error playing sound: ", e)
             print(traceback.format_exc())
             print("-" * 50)
-            raise e     
+            raise e       
     def update_fps_time(self) -> float:
         time_current: float = time.time()
         fps: float = 1 / (time_current - self.time_previous)
@@ -56,9 +62,9 @@ class ExerciseLogic:
                 self.form = 1
             if self.form == 1:
                 self.process_specific_angles(frame)
+            cv2.rectangle(frame,(260,440),(0,490),(255,255,255),cv2.FILLED)
             cv2.putText(frame, f'counter:{str(int(self.count))}', (10, 480), cv2.FONT_HERSHEY_PLAIN, 3, (0,0,0), 3)
             cv2.putText(frame, f'fps:{str(int(self.fps))}', (10, 70), cv2.FONT_HERSHEY_PLAIN, 3, (0, 0, 255), 3)
-
     def findPose(self, img, draw=True):
         imgRGB = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
         self.results = self.pose.process(imgRGB)

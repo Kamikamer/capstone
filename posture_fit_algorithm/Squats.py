@@ -4,16 +4,18 @@ class SquatsLogic(ExerciseLogic):
         super().__init__(exercise_name=exercise_name, sound_type="IF_1")
         self.prev_form_correct = True
     def get_angles_and_thresholds(self, frame) -> tuple[list[float], list[int]]:
+        shoulder = self.findAngle(frame,13,11,23,draw=False)
         knee = self.findAngle(frame,23,25,27,draw=False)
         hip = self.findAngle(frame,11,23,25,draw=False)
         # Specify the angles and thresholds for correctness
-        angles = [hip,knee]
-        thresholds = [160,150]
+        angles = [shoulder,hip,knee]
+        thresholds = [120,160,150]
         return angles, thresholds
     def process_specific_angles(self, frame) -> None:
+        shoulder = self.findAngle(frame,13,11,23,draw=False)
         knee = self.findAngle(frame,23,25,27,draw=False)
         hip = self.findAngle(frame,11,23,25,draw=False)
-        if knee < 100 and hip < 100:
+        if knee < 100 and hip < 100 and shoulder <110:
             self.feedback = "Up"
             if self.direction == 0:
                 self.count += 0.5
