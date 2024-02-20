@@ -1,0 +1,6 @@
+# ninja log v5
+4	351	7300473267341035	build.ninja	7c18bcd50997640b
+9	1111	7300471712189348	CMakeFiles/Updater.dir/posture_fit_development/Updater.c.obj	1d022281d2b198e9
+1112	3250	7300471714231290	Updater.exe	7de409718554fbc6
+10	1079	7300473279622187	CMakeFiles/Updater.dir/posture_fit_development/Updater.c.obj	1d022281d2b198e9
+1080	3206	7300473281984338	Updater.exe	7de409718554fbc6
