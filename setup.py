@@ -6,7 +6,7 @@ setup(
     packages=['test', 'posture_fit_algorithm', 'posture_fit_development'],
     url='https://github.com/kamikamer/capstone/',
     license='GNU v3',
-    author='Kami',
+    author=['Kami', "Rin", "Magnss", "5712131658", "nibzanafri"],
     author_email='',
     description='Detect if you have proper posture while working out with NUMEROUS other features.'
 )

@@ -1,0 +1,3 @@
+D:/Private/Github/capstone/cmake-build-debug/CMakeFiles/Updater.dir
+D:/Private/Github/capstone/cmake-build-debug/CMakeFiles/edit_cache.dir
+D:/Private/Github/capstone/cmake-build-debug/CMakeFiles/rebuild_cache.dir
