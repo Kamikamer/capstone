@@ -1,5 +1,5 @@
 from posture_fit_algorithm.Gem import ExerciseLogic
-class SitupLogic(ExerciseLogic):
+class CrunchLogic(ExerciseLogic):
     def __init__(self, exercise_name) -> None:
         super().__init__(exercise_name=exercise_name, sound_type="IF_1")
         self.prev_form_correct = True        
@@ -7,20 +7,19 @@ class SitupLogic(ExerciseLogic):
         shoulder = self.findAngle(frame,13,11,23,draw=False)        
         knee = self.findAngle(frame,23,25,27,draw=False)
         hip = self.findAngle(frame,11,23,25,draw=False)
-        # Specify the angles and thresholds for correctness
         angles = [shoulder,hip,knee]
-        thresholds = [120,100,100]
+        thresholds = [90,120,160]
         return angles, thresholds
     def process_specific_angles(self, frame) -> None:
         shoulder = self.findAngle(frame,13,11,23,draw=False)        
         knee = self.findAngle(frame, 23, 25, 27, draw=False)
         hip = self.findAngle(frame, 11, 23, 25, draw=False)
-        if knee < 85 and hip < 85 and shoulder < 110:
+        if knee > 85 and hip < 110 :
             self.feedback = "Up"
             if self.direction == 0:
                 self.count += 0.5
                 self.direction = 1
-        elif knee < 90 and hip < 90:
+        elif knee > 70 and hip < 90 :
             self.feedback = "Down"
             if self.direction == 1:
                 self.count += 0.5

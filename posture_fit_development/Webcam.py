@@ -1,7 +1,7 @@
 import cv2
 from posture_fit_algorithm.Gem import ExerciseLogic
 from posture_fit_algorithm.Pushup import PushupLogic
-from posture_fit_algorithm.Situp import SitupLogic
+from posture_fit_algorithm.Crunch import SitupLogic
 #from posture_fit_algorithm.Squads import SquadsLogic
 from icecream import ic
 cap = cv2.VideoCapture(0)

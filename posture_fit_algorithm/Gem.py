@@ -105,6 +105,13 @@ class ExerciseLogic:
             return 0.0  # Return default angle if the list doesn't have enough elements
     def correctForm(self, img, angles, thresholds, draw=True) -> bool:
         is_correct_form = all(abs(angle) < threshold for angle, threshold in zip(angles, thresholds))
+        # print(angles) # 23, 166, 178
+        # if self.exercise_name == "Squats":
+        # for angle, threshold in zip(angles, thresholds):
+        #     if abs(angle) > threshold:
+        #         print(angle, threshold) 
+        # for angle, threshold in zip(angles, thresholds):
+        #     print(angle)
         color = (0, 255, 0) if is_correct_form else (0, 0, 255)
         # Check if there's a change from correct to incorrect form
         if self.prev_form_correct and not is_correct_form:

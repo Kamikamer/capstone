@@ -1,7 +1,7 @@
 import pygame
 import cv2
 from posture_fit_algorithm.Pushup import PushupLogic
-from posture_fit_algorithm.Situp import SitupLogic
+from posture_fit_algorithm.Crunch import SitupLogic
 from posture_fit_algorithm.Squats import SquatsLogic
 from icecream import ic
 
