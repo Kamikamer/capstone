@@ -26,3 +26,5 @@ If you face errors with icecream, you might need to install it with
 `pip install icecream` instead of `conda install icecream`
 
 pyupdater build --app-version v1.0.0 --console --name "PostureFit" --log-level "ERROR" --add-data "C:/Users/Ivene/miniconda3/envs/capstone/Lib/site-packages/mediapipe;mediapipe/" --add-data "C:/Users/Ivene/Documents/Github/capstone/posture_fit_algorithm;posture_fit_algorithm/" --add-data "C:/Users/Ivene/Documents/Github/capstone/posture_fit_development;posture_fit_development/" --add-data "C:/Users/Ivene/Documents/Github/capstone/assets;assets/" --hidden-import "playsound" --hidden-import "mediapipe" "./index.py"
+
+

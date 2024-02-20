@@ -2,7 +2,7 @@ import pygame
 import cv2
 import numpy as np
 from posture_fit_algorithm.Pushup import PushupLogic
-from posture_fit_algorithm.Situp import SitupLogic
+from posture_fit_algorithm.Crunch import CrunchLogic
 from posture_fit_algorithm.Squats import SquatsLogic
 pygame.init()
 BLACK = (0, 0, 0)
@@ -29,7 +29,7 @@ class Button:
         self.action = action
     def draw(self, surface):
         pygame.draw.rect(surface, self.color, self.rect)
-        font = pygame.font.Font(None, 100)
+        font = pygame.font.Font(None, 55)
         text_surface = font.render(self.text, True, (0, 0, 0))
         text_rect = text_surface.get_rect(center=self.rect.center)
         surface.blit(text_surface, text_rect)
@@ -44,22 +44,22 @@ button_height = 200
 def start_action():
     global state
     state = "exercise_selection"
-def situps_action():
+def crunch_action():
     global state, current_logic, camera_opened, cap, countdown_time, last_time
-    current_logic = SitupLogic("Situp")
+    current_logic = CrunchLogic("Crunch")
     state = "get_ready"
-    camera_opened = True
+    # camera_opened = True
     cap = cv2.VideoCapture(0, cv2.CAP_DSHOW)
     cap.set(cv2.CAP_PROP_FRAME_WIDTH, width)
     cap.set(cv2.CAP_PROP_FRAME_HEIGHT, height)
     countdown_time = 5
     last_time = pygame.time.get_ticks()
-    pygame.display.set_caption('situp')
+    pygame.display.set_caption('crunch')
 def pushups_action():
     global state, current_logic, camera_opened, cap, countdown_time, last_time
     current_logic = PushupLogic("Pushup")
     state = "get_ready"
-    camera_opened = True
+    # camera_opened = True
     cap = cv2.VideoCapture(0, cv2.CAP_DSHOW)
     cap.set(cv2.CAP_PROP_FRAME_WIDTH, width)
     cap.set(cv2.CAP_PROP_FRAME_HEIGHT, height)
@@ -81,19 +81,19 @@ def exit_action():
     global running
     running = False
 start_button = Button("Start", screen_width // 2 - button_width // 2, 0, button_width, button_height, action=start_action)
-situps_button = Button("Situps", screen_width // 2 - button_width // 2, 450, button_width, button_height, action=situps_action)
+situps_button = Button("Crunches", screen_width // 2 - button_width // 2, 450, button_width, button_height, action=crunch_action)
 pushups_button = Button("Pushups", screen_width // 2 - button_width // 2, 900, button_width, button_height, action=pushups_action)
 squats_button = Button("Squats", screen_width // 2 - button_width // 2, 1350, button_width, button_height, action=squats_action)
-exit_button = Button("Exit", screen_width - 150, 20, 100, 40, action=exit_action)
+exit_button = Button("Exit", screen_width - 150, 20, 100, 40, action=exit_action) # Doesnt work when webcam is on
 get_ready_button = Button("Get Ready", screen_width // 2 - button_width // 2, screen_height // 2 - button_height // 2, button_width, button_height, action=None)
 countdown_label = Button("", screen_width // 2 - 50, screen_height // 2 + button_height, 100, 100, action=None)
 def run_exercise_logic(exercise_logic):
     global state
     state = "get_ready"
 def draw_close_text():
-    font = pygame.font.Font(None, 36)
+    font = pygame.font.Font(None, 100)
     text_surface = font.render("Press q to exit or change excercise", True, BLACK)
-    text_rect = text_surface.get_rect(center=(screen_width // 2, 50))
+    text_rect = text_surface.get_rect(center=(screen_width // 2, 1700))
     screen.blit(text_surface, text_rect)
 def dratime():
     ticks = pygame.time.get_ticks()
@@ -133,6 +133,7 @@ while running:
             last_time = current_time
             if countdown_time <= 0:
                 state = "exercise"
+                camera_opened = True
     elif state == "exercise":
         if ret:
             # Process the logic within the frame
