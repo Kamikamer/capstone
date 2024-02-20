@@ -30,7 +30,7 @@ class Button:
         self.action = action
     def draw(self, surface):
         pygame.draw.rect(surface, self.color, self.rect)
-        font = pygame.font.Font(None, 55)
+        font = pygame.font.Font(None, 70)
         text_surface = font.render(self.text, True, (0, 0, 0))
         text_rect = text_surface.get_rect(center=self.rect.center)
         surface.blit(text_surface, text_rect)
@@ -49,18 +49,16 @@ def crunch_action():
     global state, current_logic, camera_opened, cap, countdown_time, last_time
     current_logic = CrunchLogic("Crunch")
     state = "get_ready"
-    # camera_opened = True
     cap = cv2.VideoCapture(0, cv2.CAP_DSHOW)
     cap.set(cv2.CAP_PROP_FRAME_WIDTH, width)
     cap.set(cv2.CAP_PROP_FRAME_HEIGHT, height)
     countdown_time = 5
     last_time = pygame.time.get_ticks()
-    pygame.display.set_caption('crunch')
+    pygame.display.set_caption('crunches')
 def pushups_action():
     global state, current_logic, camera_opened, cap, countdown_time, last_time
     current_logic = PushupLogic("Pushup")
     state = "get_ready"
-    # camera_opened = True
     cap = cv2.VideoCapture(0, cv2.CAP_DSHOW)
     cap.set(cv2.CAP_PROP_FRAME_WIDTH, width)
     cap.set(cv2.CAP_PROP_FRAME_HEIGHT, height)
@@ -71,7 +69,6 @@ def squats_action():
     global state, current_logic, camera_opened, cap, countdown_time, last_time
     current_logic = SquatsLogic("Squats")
     state = "get_ready"
-    camera_opened = True
     cap = cv2.VideoCapture(0, cv2.CAP_DSHOW)
     cap.set(cv2.CAP_PROP_FRAME_WIDTH, width)
     cap.set(cv2.CAP_PROP_FRAME_HEIGHT, height)
@@ -85,7 +82,7 @@ start_button = Button("Start", screen_width // 2 - button_width // 2, 0, button_
 situps_button = Button("Crunches", screen_width // 2 - button_width // 2, 450, button_width, button_height, action=crunch_action)
 pushups_button = Button("Pushups", screen_width // 2 - button_width // 2, 900, button_width, button_height, action=pushups_action)
 squats_button = Button("Squats", screen_width // 2 - button_width // 2, 1350, button_width, button_height, action=squats_action)
-exit_button = Button("Exit", screen_width - 150, 20, 100, 40, action=exit_action) # Doesnt work when webcam is on
+exit_button = Button("Exit", screen_width - 150, 10, 100, 50, action=exit_action) # Doesnt work when webcam is on
 get_ready_button = Button("Get Ready", screen_width // 2 - button_width // 2, screen_height // 2 - button_height // 2, button_width, button_height, action=None)
 countdown_label = Button("", screen_width // 2 - 50, screen_height // 2 + button_height, 100, 100, action=None)
 def run_exercise_logic(exercise_logic):

@@ -9,24 +9,27 @@ class SquatsLogic(ExerciseLogic):
         hip = self.findAngle(frame,11,23,25,draw=False)
         # Specify the angles and thresholds for correctness
         angles = [shoulder,hip,knee]
-        thresholds = [90,160,180]
+        thresholds = [90,178,178]
         return angles, thresholds
     def process_specific_angles(self, frame) -> None:
         shoulder = self.findAngle(frame,13,11,23,draw=False)
         knee = self.findAngle(frame,23,25,27,draw=False)
         hip = self.findAngle(frame,11,23,25,draw=False)
-        if knee < 150 and hip > 65:
+        if knee > 160 and hip > 160:
             self.feedback = "Up"
             if self.direction == 0:
                 self.count += 0.5
                 self.direction = 1
-        elif knee > 150 and hip > 30:
+        elif knee < 50 and hip < 50:
             self.feedback = "Down"
             if self.direction == 1:
                 self.count += 0.5
                 self.direction = 0
         else:
             self.count += 0
+        print(f'{knee:.0f}')
+        print(f'{hip:.0f}')
+        print(f'{shoulder:.0f}')
     def process_frame(self, frame) -> None:
         return super().process_frame(frame=frame)
         # 100, 100, 85, 85

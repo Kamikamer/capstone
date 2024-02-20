@@ -62,9 +62,9 @@ class ExerciseLogic:
                 self.form = 1
             if self.form == 1:
                 self.process_specific_angles(frame)
-            cv2.rectangle(frame,(260,440),(0,490),(255,255,255),cv2.FILLED)
-            cv2.putText(frame, f'counter:{str(int(self.count))}', (10, 480), cv2.FONT_HERSHEY_PLAIN, 3, (0,0,0), 3)
-            cv2.putText(frame, f'fps:{str(int(self.fps))}', (10, 70), cv2.FONT_HERSHEY_PLAIN, 3, (0, 0, 255), 3)
+            cv2.rectangle(frame,(370,440),(0,490),(255,255,255),cv2.FILLED)
+            cv2.putText(frame, f'counter : {int(self.count):03d}', (10, 480), cv2.FONT_HERSHEY_PLAIN, 3, (0,0,0), 3)
+            cv2.putText(frame, f'fps : {str(int(self.fps))}', (10, 70), cv2.FONT_HERSHEY_PLAIN, 3, (0, 0, 255), 3)
     def findPose(self, img, draw=True):
         imgRGB = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
         self.results = self.pose.process(imgRGB)
