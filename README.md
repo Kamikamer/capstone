@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # This is the development branch for all the coding and testing, anything officially submitted will be in [production branch](https://github.com/Kamikamer/capstone/tree/main), we are in [development branch](https://github.com/Kamikamer/capstone/tree/development)
 
 ## Table of contents
