@@ -7,8 +7,9 @@ from posture_fit_algorithm.Squats import SquatsLogic
 pygame.init()
 BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
-screen_width = 3200
-screen_height = 2000
+screen_width  = pygame.display.Info().current_w or 1920
+screen_height = pygame.display.Info().current_h or 1080
+
 screen = pygame.display.set_mode((screen_width, screen_height))
 pygame.display.set_caption('Exercise App')
 clock = pygame.time.Clock()
