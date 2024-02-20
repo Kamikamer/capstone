@@ -1,14 +1,16 @@
+#include <curl/curl.h>
+#include <pthread.h>
 #include <stdio.h>
 #include <stdbool.h>
 #include <stdlib.h>
 #include <string.h>
-#include <curl/curl.h>
 // #include "cjson/cJSON.h" // Include cJSON header
 
 size_t read_callback(char *ptr, size_t size, size_t nitems, void *userdata);
 static size_t cb(void *data, size_t size, size_t nmemb, void *clientp);
 struct version read_version(char *data);
 const char* to_numeric_bool(const int value);
+void* launchNotepad(void* vargp);
 
 struct memory {
     char *response;
@@ -22,11 +24,14 @@ struct version {
     unsigned int patch;
     uint64_t serialized;
 };
+
 int main(int argc, char *argv[]) {
     curl_global_init(CURL_GLOBAL_ALL);
 
     CURL *curl = curl_easy_init();
     struct memory chunk = {0};
+    pthread_id thread_id;
+
 
     if (curl) {
         curl_easy_setopt(curl, CURLOPT_DEFAULT_PROTOCOL, "https");
@@ -59,8 +64,10 @@ int main(int argc, char *argv[]) {
                 printf("Fake App Version: %s - %llu\n", app_ver.str, app_ver.serialized);
 
                 if (argc <= 1) {
-                    (void)system("C:\\Windows\\notepad.exe");
-                    printf("Notepad has closed");
+    		    pthread_create(&thread_id, NULL, launchNotepad, NULL); 
+		    printf("Thread is continuing");
+# (void)system("C:\\Windows\\notepad.exe");
+#                  printf("Notepad has closed");
                     return;
                 } else {
                     printf("Total arguments received: %d\n", argc);
@@ -149,3 +156,9 @@ struct version read_version(char *data) {
 const char* to_numeric_bool(const int value) {
     return value ? "true" : "false";
 }
+
+void launchNotepad(void *vargp) {
+        (void)system("C:\\Windows\\notepad.exe");
+	printf("Notepad closed");
+	return NULL;
+	}
