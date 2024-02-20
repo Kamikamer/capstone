@@ -164,3 +164,4 @@ while running:
 pygame.quit()
 
 #Pushups work partially with squats
+
