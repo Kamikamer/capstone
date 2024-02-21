@@ -1,4 +1,7 @@
+import requests
 from posture_fit_algorithm.Gem import ExerciseLogic
+
+
 class PushupLogic(ExerciseLogic):
     def __init__(self, exercise_name, sound_type="IF_1") -> None:
         super().__init__(exercise_name=exercise_name, sound_type=sound_type)
@@ -27,5 +30,15 @@ class PushupLogic(ExerciseLogic):
                 self.direction = 0
         else:
             self.count += 0
+            
+    def highscore(self) -> dict[str]:
+        url = "https://api.kami.boo/posture_fit/highscore"
+        r = requests.get(url)
+
+        data = r.json()
+        print(data)
+        return data["highscore"]
+            
+    
     def process_frame(self, frame) -> None:
         return super().process_frame(frame=frame)

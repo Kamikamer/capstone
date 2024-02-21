@@ -1,6 +1,7 @@
 import pygame
 import cv2
 import numpy as np
+import threading
 from posture_fit_algorithm.Pushup import PushupLogic
 from posture_fit_algorithm.Crunch import CrunchLogic
 from posture_fit_algorithm.Squats import SquatsLogic
@@ -93,7 +94,6 @@ def draw_close_text():
     text_surface = font.render("Press q to exit or change excercise", True, BLACK)
     text_rect = text_surface.get_rect(center=(screen_width // 2, 1700))
     screen.blit(text_surface, text_rect)
-def dratime():
     ticks = pygame.time.get_ticks()
     millis=ticks%1000
     seconds=int(ticks/1000 % 60)
@@ -103,6 +103,10 @@ def dratime():
     text_surf = fontt.render(f'time : {out}', True, BLACK)
     text_rectt = text_surf.get_rect(center=(screen_width // 2, 100))
     screen.blit(text_surf, text_rectt)
+    fps = int(clock.get_fps())
+    fonttt = pygame.font.Font(None,150)
+    fpst = fonttt.render(f'fps : {fps}', True, BLACK)
+    screen.blit(fpst,(10,70))
 running = True
 while running:
     current_time = pygame.time.get_ticks()
@@ -131,8 +135,8 @@ while running:
             last_time = current_time
             if countdown_time <= 0:
                 state = "exercise"
-                camera_opened = True
     elif state == "exercise":
+        camera_opened = True
         if ret:
             # Process the logic within the frame
             if current_logic:
@@ -146,8 +150,8 @@ while running:
             frame = pygame.transform.scale(frame, (screen_width, screen_height))
             # Blit frame onto Pygame display
             screen.blit(frame, (0, 0))
-            draw_close_text()
-            dratime()
+            t1 = threading.Thread(target=draw_close_text, name='t1')
+            # draw_close_text()
             for event in pygame.event.get():
                 if event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_q:
@@ -163,4 +167,3 @@ while running:
 pygame.quit()
 
 #Pushups work partially with squats
-
