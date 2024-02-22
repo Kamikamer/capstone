@@ -172,9 +172,9 @@ while running:
             for event in pygame.event.get():
                 if event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_q:
-                        top_hs = requests.get("https://api.kami.boo/posture_fit/highscore").highscore
+                        top_hs = requests.get("https://api.kami.boo/posture_fit/highscore")["highscore"]
                         if current_logic.count > top_hs:
-                            requests.post("https://api.kami.boo/posture_fit/highscore", json.dumps({highscore: current_logic.count})
+                            requests.post("https://api.kami.boo/posture_fit/highscore", json.dumps({highscore: current_logic.count}))
                         del current_logic
                         state = "exercise_selection"
                         camera_opened = False
