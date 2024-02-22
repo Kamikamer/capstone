@@ -6,7 +6,8 @@ import requests
 from posture_fit_algorithm.Pushup import PushupLogic
 from posture_fit_algorithm.Crunch import CrunchLogic
 from posture_fit_algorithm.Squats import SquatsLogic
-
+top_hs = requests.get("https://api.kami.boo/posture_fit/highscore").json()["highscore"]
+print(top_hs)
 pygame.init()
 
 BLACK = (0, 0, 0)
@@ -172,7 +173,7 @@ while running:
             for event in pygame.event.get():
                 if event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_q:
-                        top_hs = requests.get("https://api.kami.boo/posture_fit/highscore")["highscore"]
+                        top_hs = requests.get("https://api.kami.boo/posture_fit/highscore").json()["highscore"]
                         if current_logic.count > top_hs:
                             requests.post("https://api.kami.boo/posture_fit/highscore", json.dumps({highscore: current_logic.count}))
                         del current_logic
