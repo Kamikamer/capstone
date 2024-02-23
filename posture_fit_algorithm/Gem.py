@@ -68,6 +68,7 @@ class ExerciseLogic:
             if self.exercise_name == 'Squats':
                 cv2.putText(frame,'squats', (10, 440), cv2.FONT_HERSHEY_PLAIN, 3, (0,0,0), 3)
             if self.exercise_name == 'Crunch':
+                cv2.putText(frame,'crunches', (10, 440), cv2.FONT_HERSHEY_PLAIN, 3, (0,0,0), 3)   
             cv2.putText(frame, f'counter : {int(self.count):03d}', (10, 480), cv2.FONT_HERSHEY_PLAIN, 3, (0,0,0), 3)
             cv2.putText(frame, f'fps : {str(int(self.fps))}', (10, 70), cv2.FONT_HERSHEY_PLAIN, 3, (0, 0, 255), 3)
     def findPose(self, img, draw=True):
