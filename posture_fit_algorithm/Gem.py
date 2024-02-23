@@ -66,9 +66,14 @@ class ExerciseLogic:
             if self.form == 1:
                 self.process_specific_angles(frame)
             cv2.rectangle(frame,(370,400),(0,490),(255,255,255),cv2.FILLED)
+            if self.exercise_name == 'Pushup':
+                cv2.putText(frame,'pushup', (10, 440), cv2.FONT_HERSHEY_PLAIN, 3, (0,0,0), 3)
+            if self.exercise_name == 'Squats':
+                cv2.putText(frame,'squats', (10, 440), cv2.FONT_HERSHEY_PLAIN, 3, (0,0,0), 3)
+            if self.exercise_name == 'Crunch':
+                cv2.putText(frame,'crunches', (10, 440), cv2.FONT_HERSHEY_PLAIN, 3, (0,0,0), 3)   
             cv2.putText(frame, f'counter : {int(self.count):03d}', (10, 480), cv2.FONT_HERSHEY_PLAIN, 3, (0,0,0), 3)
             cv2.putText(frame, f'fps : {str(int(self.fps))}', (10, 70), cv2.FONT_HERSHEY_PLAIN, 3, (0, 0, 255), 3)
-            
             # t1 = threading.Thread(target=lambda: cv2.putText(frame,str(f'highscore : {self.highscore()}'),(10,440),cv2.FONT_HERSHEY_PLAIN,3,(0,0,0),3), name='t1')
             # t1.start()
             # t1.join()
