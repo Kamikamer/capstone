@@ -30,7 +30,7 @@ last_time = pygame.time.get_ticks()
 
 camera_opened = False
 cap = None
-
+top_hs = requests.get("https://api.kami.boo/posture_fit/highscore").json()["highscore"]
 # Define Button class
 class Button:
     def __init__(self, text, x, y, width, height, action):
@@ -124,6 +124,12 @@ def dratime():
     text_rectt = text_surf.get_rect(center=(screen_width // 2, 100))
     screen.blit(text_surf, text_rectt)
 
+def hs():
+    fonttt = pygame.font.Font(None, 100)
+    text_surfa = fonttt.render(f'highscore : {int(top_hs)}', True, BLACK)
+    screen.blit(text_surfa, (20,900))
+
+
 running = True
 while running:
     current_time = pygame.time.get_ticks()
@@ -166,10 +172,12 @@ while running:
             frame = pygame.surfarray.make_surface(frame)
             # Resize frame to fit Pygame display
             frame = pygame.transform.scale(frame, (screen_width, screen_height))
-            # Blit frame onto Pygame display
+            # Blit frame onto Pygam
+            # e display
             screen.blit(frame, (0, 0))
             draw_close_text()
             dratime()
+            hs()
             for event in pygame.event.get():
                 if event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_q:

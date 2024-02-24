@@ -62,7 +62,7 @@ class ExerciseLogic:
                 self.form = 1
             if self.form == 1:
                 self.process_specific_angles(frame)
-            cv2.rectangle(frame,(370,400),(0,490),(255,255,255),cv2.FILLED)
+            cv2.rectangle(frame,(370,400),(0,525),(255,255,255),cv2.FILLED)
             if self.exercise_name == 'Pushup':
                 cv2.putText(frame,'pushup', (10, 440), cv2.FONT_HERSHEY_PLAIN, 3, (0,0,0), 3)
             if self.exercise_name == 'Squats':
