@@ -1,10 +1,28 @@
-import pygame
-import cv2
-import numpy as np
+## Imports
+### Play a melodic tune
+from posture_fit_development.Startup import startup, booting, booting2, update
 import threading
+## Continue importing
+import cv2
+import json
+import logging
+import logging.config
+import logging.handlers
+import numpy as np
+import os
+import pathlib
+import pygame
+import requests
+import subprocess
+import sys 
+from packaging import version
 from posture_fit_algorithm.Pushup import PushupLogic
 from posture_fit_algorithm.Crunch import CrunchLogic
 from posture_fit_algorithm.Squats import SquatsLogic
+from posture_fit_development.Logger import CustomLogger
+from posture_fit_development.OsChecker import Statistic
+from dataclasses import dataclass, field
+
 pygame.init()
 BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
