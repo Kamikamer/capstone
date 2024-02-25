@@ -1,5 +1,6 @@
 ## Imports
 ### Play a melodic tune
+from posture_fit_development import Stopwatch
 from posture_fit_development.Startup import startup, booting, booting2, update
 import threading
 e = threading.Event()
@@ -29,6 +30,7 @@ import pygame
 import requests
 import subprocess
 import sys 
+import time
 from packaging import version
 from posture_fit_algorithm.Pushup import PushupLogic
 from posture_fit_algorithm.Crunch import CrunchLogic
@@ -155,19 +157,21 @@ def draw_close_text():
     text_surface = font.render("Press q to exit or change exercise", True, BLACK)
     text_rect = text_surface.get_rect(center=(screen_width // 2, screen_height * 0.9))
     screen.blit(text_surface, text_rect)
-    ticks = pygame.time.get_ticks()
-    millis=ticks%1000
-    seconds=int(ticks/1000 % 60)
-    minutes=int(ticks/60000 % 24)
-    out=' {minutes:02d} : {seconds:02d} : {millis} '.format(minutes=minutes, millis=millis, seconds=seconds)    
+    # ticks = pygame.time.get_ticks()
+    # millis=ticks%1000
+    # seconds=int(ticks/1000 % 60)
+    # minutes=int(ticks/60000 % 24)
+    # out=' {minutes:02d} : {seconds:02d} : {millis} '.format(minutes=minutes, millis=millis, seconds=seconds)    
+
     fontt = pygame.font.Font(None, int(100 * font_scale))
-    text_surf = fontt.render(f'time : {out}', True, BLACK)
+    text_surf = fontt.render(f'time : {Stopwatch().get_elapsed_time()}', True, BLACK)
     text_rectt = text_surf.get_rect(center=(screen_width // 2, int(100 * font_scale)))
     screen.blit(text_surf, text_rectt)
     fps = int(clock.get_fps())
     fonttt = pygame.font.Font(None, int(150 * font_scale))
     fpst = fonttt.render(f'fps : {fps}', True, BLACK)
     screen.blit(fpst,(int(10 * position_scale_x), int(70 * position_scale_y)))
+
 running = True
 while running:
     current_time = pygame.time.get_ticks()
@@ -199,6 +203,8 @@ while running:
     elif state == "exercise":
         camera_opened = True
         if ret:
+            sw = Stopwatch()
+            sw.start()
             # Process the logic within the frame
             if current_logic:
                 current_logic.process_frame(frame)  # Assuming process_frame method handles the logic
@@ -215,6 +221,8 @@ while running:
             for event in pygame.event.get():
                 if event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_q:
+                        sw.reset()
+                        sw.stop()
                         state = "exercise_selection"
                         camera_opened = False
                         # Release camera and close OpenCV windows
