@@ -1,7 +1,5 @@
 import time
 
-from eel import sleep
-
 class Stopwatch:
     _instance = None
 
@@ -46,7 +44,7 @@ class Stopwatch:
 if __name__ == "__main__":
     Stopwatch = Stopwatch()
     Stopwatch.start()
-    sleep(4)
+    time.sleep(4)
     print(Stopwatch.get_elapsed_time())
-    sleep(3)
+    time.sleep(3)
     print(Stopwatch.get_elapsed_time())
