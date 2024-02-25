@@ -191,7 +191,7 @@ while running:
         get_ready_button.draw(screen)
         countdown_label.text = str(countdown_time)
         countdown_label.draw(screen)
-        if current_time - last_time > 1000:
+        if current_time - last_time > 500:
             countdown_time -= 1
             last_time = current_time
             if countdown_time <= 0:

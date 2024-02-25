@@ -50,7 +50,7 @@ class ExerciseLogic:
             raise e       
 
     def update_fps_time(self) -> float:
-        time_current: float = time.time()
+        time_current: float = time.perf_counter()
         fps: float = 1 / (time_current - self.time_previous)
         self.time_previous: float = time_current
         self.fps: float = fps
