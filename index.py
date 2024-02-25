@@ -2,6 +2,20 @@
 ### Play a melodic tune
 from posture_fit_development.Startup import startup, booting, booting2, update
 import threading
+e = threading.Event()
+e2 = threading.Event()
+boot_greet = threading.Thread(target=booting, args=(e, e2))
+boot_greet_2 = threading.Thread(target=booting2, args=(e2, e))
+
+boot_greet.start()
+
+### Alert the user that the app is starting
+try:
+    import pyi_splash # type: ignore
+    pyi_splash.update_text("When it finishes running the background stuff, it will start the app and show the app whilst closing this app.")
+except ImportError:
+    pass
+
 ## Continue importing
 import cv2
 import json
