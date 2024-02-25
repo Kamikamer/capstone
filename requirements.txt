@@ -1,0 +1,8 @@
+opencv-python
+mediapipe
+numpy
+playsound==1.2.2
+icecream
+pyinstaller
+PyUpdater
+pygame
