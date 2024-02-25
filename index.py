@@ -1,14 +1,13 @@
 ## Imports
 ### Play a melodic tune
-from posture_fit_development.Startup import startup, booting, booting2
+from posture_fit_development.Startup import startup, booting, booting2, update
 import threading
 e = threading.Event()
 e2 = threading.Event()
 boot_greet = threading.Thread(target=booting, args=(e, e2))
 boot_greet_2 = threading.Thread(target=booting2, args=(e2, e))
 
-boot_greet.start()
-# boot_greet_2.start() 
+boot_greet.start() 
 
 ### Alert the user that the app is starting
 try:
@@ -16,24 +15,55 @@ try:
     pyi_splash.update_text("When it finishes running the background stuff, it will start the app and show the app whilst closing this app.")
 except ImportError:
     pass
+
 ## Continue importing
-import pygame
 import cv2
+import json
+import logging 
+import logging.config
+import logging.handlers
 import numpy as np
+import os
+import pathlib
+import pygame
+import requests
+import subprocess
+import sys
+from packaging import version
 from posture_fit_algorithm.Pushup import PushupLogic
 from posture_fit_algorithm.Situp import SitupLogic
 from posture_fit_algorithm.Squats import SquatsLogic
+from posture_fit_development.Logger import CustomLogger
+from posture_fit_development.OsChecker import Statistic
+from dataclasses import dataclass, field
 
 try:
     pyi_splash.close()
 except NameError:
     pass
-import pygame
-import cv2
-import numpy as np
-from posture_fit_algorithm.Pushup import PushupLogic
-from posture_fit_algorithm.Situp import SitupLogic
-from posture_fit_algorithm.Squats import SquatsLogic
+
+@dataclass
+class Version:
+    def getGithubVersion() -> str:
+        response = requests.get("https://api.github.com/repos/kamikamer/capstone/releases/latest")
+        return response.json()["tag_name"]
+
+    current_version: str = ""
+    github_version: str = field(default_factory = getGithubVersion)
+
+
+stats = Statistic()
+app_version = Version(current_version="v0.0.9")
+
+if stats.executable is False:
+    logger = CustomLogger(True).logger
+
+if update(app_version.current_version, app_version.github_version):
+    print("PID-python: {}".format(os.getpid()) )
+    subprocess.run([ "./au.exe" if stats.windows else "./au", str(os.getpid()), str(int(stats.executable)) ])
+else:
+    logger.debug(app_version.current_version)
+    logger.info("Requires UPDATE: false.")
 
 pygame.init()
 
@@ -43,7 +73,7 @@ WHITE = (255, 255, 255)
 screen_width = 3200
 screen_height = 2000
 screen = pygame.display.set_mode((screen_width, screen_height))
-pygame.display.set_caption('Exercise App')
+pygame.display.set_caption('Exercise MApp')
 
 clock = pygame.time.Clock()
 

@@ -1,4 +1,6 @@
+import logging
 import threading
+from packaging import version
 from typing import NoReturn
 from .Sound import SoundPlayer
 
@@ -33,3 +35,12 @@ def booting2(e2: threading.Event, e: threading.Event) -> None:
     loopThread = threading.Thread(target=loopSound, name='booting2Thread')
     loopThread.daemon = True
     loopThread.start()
+
+def update(avcv: str, avgv: str) -> bool:
+    logger = logging.getLogger("PostureFIT")
+    try:
+        return version.parse(avcv) < version.parse(avgv)
+    except version.InvalidVersion:
+        logger.warn("Invalid version, please check the issue. Do a pull request or an issue request, thanks!")
+        return False
+

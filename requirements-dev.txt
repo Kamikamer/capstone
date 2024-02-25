@@ -3,3 +3,4 @@ pyinstaller
 PyUpdater
 tufup
 psutils
+pyyaml

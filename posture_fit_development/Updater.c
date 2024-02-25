@@ -1,164 +1,107 @@
 #include <curl/curl.h>
-#include <pthread.h>
+#include <execinfo.h>
+#include <json-c/json.h>
 #include <stdio.h>
-#include <stdbool.h>
 #include <stdlib.h>
 #include <string.h>
-// #include "cjson/cJSON.h" // Include cJSON header
+#include <unistd.h>
 
-size_t read_callback(char *ptr, size_t size, size_t nitems, void *userdata);
-static size_t cb(void *data, size_t size, size_t nmemb, void *clientp);
-struct version read_version(char *data);
-const char* to_numeric_bool(const int value);
-void* launchNotepad(void* vargp);
+#ifdef _WIN32
+#include <windows.h>
+#else
+#include <signal.h>
+#endif
+
+void downloadExe();
+size_t write_cb(char *ptr, size_t size, size_t nmemb, void *data);
 
 struct memory {
     char *response;
     size_t size;
 };
 
-struct version {
-    char str[10];
-    unsigned int major;
-    unsigned int minor;
-    unsigned int patch;
-    uint64_t serialized;
-};
+int main(int argc, char** argv) {
+	if (argc <= 1) {
+		printf("ABORTING: PID not given\n");
+		return -1;
+	}
+    else if (argc <= 2) {
+        printf("ABORTING: PID || Runtime_Type not given\n");
+        return -1;
+    }
 
-int main(int argc, char *argv[]) {
+	const long int pid = strtol(argv[1], NULL, 10);
+    char exe_path[260]; 
+    char s[260];
+    strcpy(exe_path, argv[2]);
+
+	printf("PID-c: %ld\n", pid); 
+	printf("Current Directory: %s\n", exe_path); 
+
+    chdir(exe_path);
+    downloadExe();
+
+	#ifdef _WIN32
+            const auto explorer = OpenProcess(PROCESS_TERMINATE, false, pid);
+            TerminateProcess(explorer, 1);
+            CloseHandle(explorer);
+	#else
+		kill(pid, 9);
+	#endif
+	return 0;
+}
+
+void downloadExe() {
     curl_global_init(CURL_GLOBAL_ALL);
 
     CURL *curl = curl_easy_init();
     struct memory chunk = {0};
-    pthread_id thread_id;
 
+    if (!curl) {
+        fprintf(stderr, "Failed to initialize libcurl\n");
+    }
+    
+    curl_easy_setopt(curl, CURLOPT_DEFAULT_PROTOCOL, "https");
+    curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, write_cb);
+    curl_easy_setopt(curl, CURLOPT_WRITEDATA, (void *)&chunk);
+    curl_easy_setopt(curl, CURLOPT_URL, "https://api.github.com/repos/kamikamer/capstone/releases/latest");
 
-    if (curl) {
-        curl_easy_setopt(curl, CURLOPT_DEFAULT_PROTOCOL, "https");
-        curl_easy_setopt(curl, CURLOPT_URL, "https://api.kami.wtf/posture_fit/lts_version");
-        // curl_easy_setopt(curl, CURLOPT_READFUNCTION, read_callback);
-        // curl_easy_setopt(curl, CURLOPT_READDATA, &this);
+    CURLcode res = curl_easy_perform(curl);
+    
+    if (res != CURLE_OK) {
+ //       fprintf(stderr, "curl_easy_perform() failed: %s\n", curl_easy_strerror(res));
+        printf("MEOW NO CURL GOOD");
+        return;
+    }
+    
+    curl_easy_cleanup(curl);
 
-        curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, cb);
-        curl_easy_setopt(curl, CURLOPT_WRITEDATA, (void *)&chunk);
-        /* pass in suitable argument to callback */
+    const char *response_data = chunk.response;
 
-        CURLcode result = curl_easy_perform(curl);
+    struct json_object *root = json_tokener_parse(chunk.response);
 
-        if(result == CURLE_OK) {
-            // Print the response data
-
-            // Assuming chunk.response contains the JSON response
-            const char *response_data = chunk.response;
-
-            // Parse JSON
-            // cJSON *root = cJSON_Parse(response_data);
-            if (response_data != NULL) {
-                struct version latest_release = read_version(response_data);
-                struct version ver = read_version("1.2.9");
-                struct version app_ver = read_version("1.0.1");
-                int requires_update = ver.serialized >= app_ver.serialized;
-
-                printf("Github Version: %s - %llu\n", latest_release.str, latest_release.serialized);
-                printf("Fake Github Version: %s - %llu\n", ver.str, ver.serialized);
-                printf("Fake App Version: %s - %llu\n", app_ver.str, app_ver.serialized);
-
-                if (argc <= 1) {
-    		    pthread_create(&thread_id, NULL, launchNotepad, NULL); 
-		    printf("Thread is continuing");
-# (void)system("C:\\Windows\\notepad.exe");
-#                  printf("Notepad has closed");
-                    return;
-                } else {
-                    printf("Total arguments received: %d\n", argc);
-                    for (int i = 0; i < argc; ++i) {
-                        printf("%s\n", argv[i]);
-                    }
-                }
-
-                printf("Requires an update: %s\n", to_numeric_bool(requires_update));
-                // Free cJSON root
-                // can u make a version w/o response_data rq, i wanna test if it works with say 1.2.7
-                // it takes any char array!
-            } else {
-                printf("Error retrieving data from server: %s\n", response_data);
-            }
-        } else {
-            // Handle request failure
-            fprintf(stderr, "curl_easy_perform() failed: %s\n", curl_easy_strerror(result));
-        }
-
+    if (!root) {
+        fprintf(stderr, "Error parsing JSON\n");
         free(chunk.response);
-
-        curl_easy_cleanup(curl);
-    }
-    return 0;
-}
-
-size_t read_callback(char *ptr, size_t size, size_t nmemb, void *userdata) {
-    FILE *readhere = (FILE *)userdata;
-    curl_off_t nread;
-
-    /* copy as much data as possible into the 'ptr' buffer, but no more than
-       'size' * 'nmemb' bytes! */
-    size_t retcode = fread(ptr, size, nmemb, readhere);
-
-    nread = (curl_off_t)retcode;
-
-    fprintf(stderr, "*** We read %" CURL_FORMAT_CURL_OFF_T
-            " bytes from file\n", nread);
-    printf("MEOW\n");
-    return retcode;
-}
-
-static size_t cb(void *data, size_t size, size_t nmemb, void *clientp)
-{
-    size_t realsize = size * nmemb;
-    struct memory *mem = (struct memory *)clientp;
-
-    char *ptr = realloc(mem->response, mem->size + realsize + 1);
-    if(!ptr)
-        return 0;  /* out of memory! */
-
-    mem->response = ptr;
-    memcpy(&(mem->response[mem->size]), data, realsize);
-    mem->size += realsize;
-    mem->response[mem->size] = 0;
-
-    return realsize;
-}
-
-struct version read_version(char *data) {
-    char data_copy[10] = {0};
-    strcpy_s(data_copy, 10, data);
-
-    char* tokens[3];  // Array to store the tokens
-    const char* tok = strtok(data_copy, ".");
-
-    int i = 0;
-    while (tok != NULL && i < 3) {
-        tokens[i] = tok;
-        tok = strtok(NULL, ".");
-        i++;
+        return;
     }
 
-    struct version ver = {
-        .major = tokens[0][0] - '0',
-        .minor = tokens[1][0] - '0',
-        .patch = tokens[2][0] - '0',
-        .serialized = ver.major*1000000LL + ver.minor*10000 + ver.patch*100
-    };
-    strcpy_s(ver.str, 10, data);
 
-    return ver;
+    struct json_object *assets;
+    // if (!json_object_object_get_ex(root, "assets", &assets) || !json_object_is_type(assets, json_type_array)) {
+       // fprintf(stderr, "No assets found in JSON\n");
+    //    json_object_put(root);
+      //  free(chunk.response);
+        //return;
+//    }
+    
+
+
+
+//    printf("The json string:\n\n%s\n\n", json_object_to_json_string(root));
 }
 
-const char* to_numeric_bool(const int value) {
-    return value ? "true" : "false";
+size_t write_cb(char *ptr, size_t size, size_t nmemb, void *userdata) {
+    FILE *output = (FILE *)userdata;
+    return fwrite(ptr, size, nmemb, output);
 }
-
-void launchNotepad(void *vargp) {
-        (void)system("C:\\Windows\\notepad.exe");
-	printf("Notepad closed");
-	return NULL;
-	}
