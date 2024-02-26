@@ -73,6 +73,9 @@ last_time = pygame.time.get_ticks()
 camera_opened = False
 cap = None
 
+
+
+
 # Define Button class
 class Button:
     def __init__(self, text, x, y, width, height, action):
