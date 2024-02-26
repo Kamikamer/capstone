@@ -50,7 +50,7 @@ class ExerciseLogic:
             raise e       
 
     def update_fps_time(self) -> float:
-        time_current: float = time.time()
+        time_current: float = time.perf_counter()
         fps: float = 1 / (time_current - self.time_previous)
         self.time_previous: float = time_current
         self.fps: float = fps
@@ -76,9 +76,6 @@ class ExerciseLogic:
                 cv2.putText(frame,'crunches', (10, 440), cv2.FONT_HERSHEY_PLAIN, 3, (0,0,0), 3)   
             cv2.putText(frame, f'counter : {int(self.count):03d}', (10, 480), cv2.FONT_HERSHEY_PLAIN, 3, (0,0,0), 3)
             cv2.putText(frame, f'fps : {str(int(self.fps))}', (10, 70), cv2.FONT_HERSHEY_PLAIN, 3, (0, 0, 255), 3)
-            # t1 = threading.Thread(target=lambda: cv2.putText(frame,str(f'highscore : {self.highscore()}'),(10,440),cv2.FONT_HERSHEY_PLAIN,3,(0,0,0),3), name='t1')
-            # t1.start()
-            # t1.join()
 
     def findPose(self, img, draw=True):
         imgRGB = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
@@ -87,6 +84,7 @@ class ExerciseLogic:
             if draw:
                 self.mpDraw.draw_landmarks(img, self.results.pose_landmarks, self.mpPose.POSE_CONNECTIONS)  # pytype: disable=attribute-error # type: ignore
         return img
+    
     def findPosition(self, img, draw=True) -> list:
         self.lmList = []
         if self.results.pose_landmarks: # type: ignore
@@ -97,6 +95,7 @@ class ExerciseLogic:
                 if draw:
                     cv2.circle(img, (cx, cy), 5, (255, 0, 0), cv2.FILLED)
         return self.lmList
+    
     def findAngle(self, img, p1, p2, p3, draw=True) -> float:
         if len(self.lmList) >= max(p1, p2, p3) + 1:  # Check if the list has enough elements
             x1, y1 = self.lmList[p1][1:]
@@ -154,6 +153,5 @@ class ExerciseLogic:
         raise NotImplementedError
     def process_specific_angles(self, frame) -> None:
         raise NotImplementedError
-    
     def highscore(self) -> dict[str]:
         raise NotImplementedError
