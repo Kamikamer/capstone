@@ -75,7 +75,7 @@ class ExerciseLogic:
             if self.exercise_name == 'Crunch':
                 cv2.putText(frame,'crunches', (10, 440), cv2.FONT_HERSHEY_PLAIN, 3, (0,0,0), 3)   
             cv2.putText(frame, f'counter : {int(self.count):03d}', (10, 480), cv2.FONT_HERSHEY_PLAIN, 3, (0,0,0), 3)
-            cv2.putText(frame, f'fps : {str(int(self.fps))}', (10, 70), cv2.FONT_HERSHEY_PLAIN, 3, (0, 0, 255), 3)
+            # cv2.putText(frame, f'fps : {str(int(self.fps))}', (10, 70), cv2.FONT_HERSHEY_PLAIN, 3, (0, 0, 255), 3)
 
     def findPose(self, img, draw=True):
         imgRGB = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
